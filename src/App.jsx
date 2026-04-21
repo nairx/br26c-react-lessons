@@ -1,23 +1,70 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { useState } from "react";
+import "./App.css"
 export default function App() {
-  const [user, setUser] = useState({});
-  const handleSubmit = () => {
-    console.log(user)
-  }
+  const products = [
+    {
+      id: 1,
+      imgUrl:"1.PNG",
+      name: "Product 1",
+      price: 30,
+      desc: "This is the descript of the product",
+    },
+    {
+      id: 2,
+      imgUrl:"2.PNG",
+      name: "Product 2",
+      price: 50,
+      desc: "This is the descript of the product",
+    },
+    {
+      id: 3,
+      imgUrl:"3.PNG",
+      name: "Product 3",
+      price: 45,
+      desc: "This is the descript of the product",
+    },
+  ];
   return (
     <div>
       <Header />
-      <h3>Registration Form</h3>
-      <p><input type="text" placeholder="Name" onChange={(e) => setUser({...user,name:e.target.value})} /></p>
-       <p><input type="text" placeholder="Email" onChange={(e) => setUser({...user,email:e.target.value})} /></p>
-        <p><input type="password" placeholder="Password" onChange={(e) => setUser({...user,password:e.target.value})} /></p>
-      <button onClick={handleSubmit}>Submit</button>
+      <div className="row">
+        {products.map((product) => (
+          <div key={product.id}>
+            <img src={product.imgUrl} width="300px" alt="" />
+            <h3>{product.name}</h3>
+            <p>{product.desc}</p>
+            <h4>{product.price}</h4>
+            <button>Add to Cart</button>
+          </div>
+        ))}
+      </div>
       <Footer />
     </div>
   );
 }
+
+// import Header from "./components/Header";
+// import Footer from "./components/Footer";
+// import { useState } from "react";
+// export default function App() {
+//   const [user, setUser] = useState({});
+//   const handleSubmit = () => {
+//     console.log(user)
+//   }
+//   return (
+//     <div>
+//       <Header />
+//       <h3>Registration Form</h3>
+//       <p><input type="text" placeholder="Name" onChange={(e) => setUser({...user,name:e.target.value})} /></p>
+//        <p><input type="text" placeholder="Email" onChange={(e) => setUser({...user,email:e.target.value})} /></p>
+//         <p><input type="password" placeholder="Password" onChange={(e) => setUser({...user,password:e.target.value})} /></p>
+//       <button onClick={handleSubmit}>Submit</button>
+//       <Footer />
+//     </div>
+//   );
+// }
 
 // import Header from "./components/Header";
 // import Footer from "./components/Footer";
