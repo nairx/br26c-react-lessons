@@ -1,45 +1,61 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { useState } from "react";
-import "./App.css"
+import "./App.css";
 export default function App() {
+  const [cart, setCart] = useState([]);
   const products = [
     {
       id: 1,
-      imgUrl:"1.PNG",
+      imgUrl: "1.PNG",
       name: "Product 1",
       price: 30,
       desc: "This is the descript of the product",
     },
     {
       id: 2,
-      imgUrl:"2.PNG",
+      imgUrl: "2.PNG",
       name: "Product 2",
       price: 50,
       desc: "This is the descript of the product",
     },
     {
       id: 3,
-      imgUrl:"3.PNG",
+      imgUrl: "3.PNG",
       name: "Product 3",
       price: 45,
       desc: "This is the descript of the product",
     },
   ];
+
+  const addToCart = (product) => {
+    product.quantity = 1
+    setCart([...cart, product]);
+  };
+
   return (
     <div>
       <Header />
       <div className="row">
-        {products.map((product) => (
-          <div key={product.id}>
-            <img src={product.imgUrl} width="300px" alt="" />
-            <h3>{product.name}</h3>
-            <p>{product.desc}</p>
-            <h4>{product.price}</h4>
-            <button>Add to Cart</button>
-          </div>
-        ))}
+        {products &&
+          products.map((product) => (
+            <div key={product.id}>
+              <img src={product.imgUrl} width="300px" alt="" />
+              <h3>{product.name}</h3>
+              <p>{product.desc}</p>
+              <h4>{product.price}</h4>
+              <button onClick={() => addToCart(product)}>Add to Cart</button>
+            </div>
+          ))}
       </div>
+      <hr />
+      <h1>My Cart</h1>
+      {cart &&
+        cart.map((item) => (
+          <li>
+            {item.name}-{item.price}-{item.quantity}
+          </li>
+        ))}
       <Footer />
     </div>
   );
