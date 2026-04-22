@@ -1,45 +1,67 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState } from "react";
+import Main from "./components/Main";
 export default function App() {
-  const url = "https://jsonplaceholder.typicode.com/users";
-  const [users, setUsers] = useState([]);
-  const [friends, setFriends] = useState([]);
-  const fetchUsers = async () => {
-    const res = await axios(url);
-    setUsers(res.data);
-  };
-  useEffect(() => {
-    fetchUsers();
-  }, []);
-  const addFriend = (user) => {
-    const found = friends.find((friend) => friend.id === user.id);
-    if (!found) {
-      setFriends([...friends, user]);
-    }
-  };
-  const removeFriend = (id) => {
-    setFriends(friends.filter((friend) => friend.id !== id));
-  };
+  const [page, setPage] = useState(1);
   return (
     <div>
-      {users &&
-        users.map((user) => (
-          <li key={user.id}>
-            {user.name}-<button onClick={() => addFriend(user)}>Add</button>
-          </li>
-        ))}
-      <hr />
-      <h3>My Friends</h3>
-      {friends &&
-        friends.map((friend) => (
-          <li key={friend.id}>
-            {friend.name}-
-            <button onClick={() => removeFriend(friend.id)}>Remove</button>
-          </li>
-        ))}
+      <div>
+        <h1>My App</h1>
+        <ul>
+          <li onClick={()=>setPage(1)}>Home</li>
+          <li onClick={()=>setPage(2)}>Services</li>
+          <li onClick={()=>setPage(3)}>About</li>
+        </ul>
+      </div>
+      <div>
+        <Main page={page} />
+      </div>
+      <div>&copy; 2026. All rights reserved.</div>
     </div>
   );
 }
+
+// import { useEffect, useState } from "react";
+// import axios from "axios";
+// export default function App() {
+//   const url = "https://jsonplaceholder.typicode.com/users";
+//   const [users, setUsers] = useState([]);
+//   const [friends, setFriends] = useState([]);
+//   const fetchUsers = async () => {
+//     const res = await axios(url);
+//     setUsers(res.data);
+//   };
+//   useEffect(() => {
+//     fetchUsers();
+//   }, []);
+//   const addFriend = (user) => {
+//     const found = friends.find((friend) => friend.id === user.id);
+//     if (!found) {
+//       setFriends([...friends, user]);
+//     }
+//   };
+//   const removeFriend = (id) => {
+//     setFriends(friends.filter((friend) => friend.id !== id));
+//   };
+//   return (
+//     <div>
+//       {users &&
+//         users.map((user) => (
+//           <li key={user.id}>
+//             {user.name}-<button onClick={() => addFriend(user)}>Add</button>
+//           </li>
+//         ))}
+//       <hr />
+//       <h3>My Friends</h3>
+//       {friends &&
+//         friends.map((friend) => (
+//           <li key={friend.id}>
+//             {friend.name}-
+//             <button onClick={() => removeFriend(friend.id)}>Remove</button>
+//           </li>
+//         ))}
+//     </div>
+//   );
+// }
 
 // import Header from "./components/Header";
 // import Footer from "./components/Footer";
