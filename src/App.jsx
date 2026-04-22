@@ -1,21 +1,45 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRef } from "react";
 export default function App() {
-  const [color, setColor] = useState();
+  const [number, setNumber] = useState();
+  const prevNum = useRef();
   const msgRef = useRef();
-  const handleSubmit = () => {
-    msgRef.current.style.color = color;
-  };
+  useEffect(() => {
+    prevNum.current = number;
+    if (prevNum.current > number) {
+      msgRef.current.style.color = "red";
+    } else {
+      msgRef.current.style.color = "green";
+    }
+  }, [number]);
   return (
     <div>
+      <p ref={msgRef}>{number}</p>
       <p>
-        <input type="text" onChange={(e) => setColor(e.target.value)} />
-        <button onClick={handleSubmit}>Submit</button>
+        <input type="number" onChange={(e) => setNumber(e.target.value)} />
       </p>
-      <p ref={msgRef}>Hello World</p>
     </div>
   );
 }
+
+// import React, { useState } from "react";
+// import { useRef } from "react";
+// export default function App() {
+//   const [color, setColor] = useState();
+//   const msgRef = useRef();
+//   const handleSubmit = () => {
+//     msgRef.current.style.color = color;
+//   };
+//   return (
+//     <div>
+//       <p>
+//         <input type="text" onChange={(e) => setColor(e.target.value)} />
+//         <button onClick={handleSubmit}>Submit</button>
+//       </p>
+//       <p ref={msgRef}>Hello World</p>
+//     </div>
+//   );
+// }
 
 // import React, { useRef,useState } from "react";
 // export default function App() {
