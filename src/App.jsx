@@ -1,24 +1,72 @@
-import { useState } from "react";
-import Main from "./components/Main";
+import React, { useRef,useState } from "react";
 export default function App() {
-  const [page, setPage] = useState(1);
+  const nameRef = useRef();
+  const [msg, setMsg] = useState();
+  const handleSubmit = () => {
+    setMsg(nameRef.current.value);
+  };
   return (
     <div>
-      <div>
-        <h1>My App</h1>
-        <ul>
-          <li onClick={()=>setPage(1)}>Home</li>
-          <li onClick={()=>setPage(2)}>Services</li>
-          <li onClick={()=>setPage(3)}>About</li>
-        </ul>
-      </div>
-      <div>
-        <Main page={page} />
-      </div>
-      <div>&copy; 2026. All rights reserved.</div>
+      <p>
+        <input type="text" ref={nameRef} />
+      </p>
+      <button onClick={handleSubmit}>Submit</button>
+      <hr />
+      {msg}
     </div>
   );
 }
+
+// import React, { useState } from "react";
+// export default function App() {
+//   const [name, setName] = useState();
+//   const [msg, setMsg] = useState();
+//   const handleSubmit = () => {
+//     setMsg(name);
+//   };
+//   return (
+//     <div>
+//       <p>
+//         <input type="text" onChange={(e) => setName(e.target.value)} />
+//       </p>
+//       <button onClick={handleSubmit}>Submit</button>
+//       <hr />
+//       {msg}
+//     </div>
+//   );
+// }
+
+// import React, { Component } from 'react'
+
+// export default class App extends Component {
+//   render() {
+//     return (
+//       <div>App</div>
+//     )
+//   }
+// }
+
+// import { useState } from "react";
+// import Main from "./components/Main";
+// export default function App() {
+//   const [page, setPage] = useState(1);
+//   return (
+//     <div>
+//       <div>
+//         <h1>My App</h1>
+//         <ul>
+//           <li onClick={()=>setPage(1)}>Home</li>
+//           <li onClick={()=>setPage(2)}>Services</li>
+//           <li onClick={()=>setPage(3)}>About</li>
+//         </ul>
+//       </div>
+//       <div>
+//         <Main page={page} />
+//       </div>
+//       <div>&copy; 2026. All rights reserved.</div>
+//     </div>
+//   );
+// }
 
 // import { useEffect, useState } from "react";
 // import axios from "axios";
