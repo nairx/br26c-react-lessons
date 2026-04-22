@@ -1,21 +1,40 @@
-import React, { useRef,useState } from "react";
+import React, { useState } from "react";
+import { useRef } from "react";
 export default function App() {
-  const nameRef = useRef();
-  const [msg, setMsg] = useState();
+  const [color, setColor] = useState();
+  const msgRef = useRef();
   const handleSubmit = () => {
-    setMsg(nameRef.current.value);
+    msgRef.current.style.color = color;
   };
   return (
     <div>
       <p>
-        <input type="text" ref={nameRef} />
+        <input type="text" onChange={(e) => setColor(e.target.value)} />
+        <button onClick={handleSubmit}>Submit</button>
       </p>
-      <button onClick={handleSubmit}>Submit</button>
-      <hr />
-      {msg}
+      <p ref={msgRef}>Hello World</p>
     </div>
   );
 }
+
+// import React, { useRef,useState } from "react";
+// export default function App() {
+//   const nameRef = useRef();
+//   const [msg, setMsg] = useState();
+//   const handleSubmit = () => {
+//     setMsg(nameRef.current.value);
+//   };
+//   return (
+//     <div>
+//       <p>
+//         <input type="text" ref={nameRef} />
+//       </p>
+//       <button onClick={handleSubmit}>Submit</button>
+//       <hr />
+//       {msg}
+//     </div>
+//   );
+// }
 
 // import React, { useState } from "react";
 // export default function App() {
