@@ -1,9 +1,10 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 export default function App() {
   const [cart, setCart] = useState([]);
+  const [orderValue, setOrderValue] = useState(0);
   const products = [
     {
       id: 1,
@@ -28,10 +29,46 @@ export default function App() {
     },
   ];
 
+  //find if product 1 exists in cart array or not
+
   const addToCart = (product) => {
-    product.quantity = 1
-    setCart([...cart, product]);
+    const found = cart.find((item) => item.id === product.id);
+    if (!found) {
+      setCart([...cart, { ...product, quantity: 1 }]);
+    }
   };
+
+  const increment = (id) => {
+    setCart(
+      cart.map((item) => {
+        if (item.id === id) {
+          item.quantity = item.quantity + 1;
+        }
+        return item;
+      }),
+    );
+  };
+
+  const decrement = (id) => {
+    setCart(
+      cart
+        .map((item) => {
+          if (item.id === id && item.quantity > 0) {
+            item.quantity = item.quantity - 1;
+          }
+          return item;
+        })
+        .filter((item) => item.quantity > 0),
+    );
+  };
+
+  useEffect(() => {
+    setOrderValue(
+      cart.reduce((total, item) => {
+        return total + item.price * item.quantity;
+      }, 0),
+    );
+  }, [cart]);
 
   return (
     <div>
@@ -53,9 +90,14 @@ export default function App() {
       {cart &&
         cart.map((item) => (
           <li>
-            {item.name}-{item.price}-{item.quantity}
+            {item.name}-{item.price}-
+            <button onClick={() => decrement(item.id)}>-</button>
+            {item.quantity}
+            <button onClick={() => increment(item.id)}>+</button>-
+            {item.price * item.quantity}-<button>Delete</button>
           </li>
         ))}
+      <h2>Order Value:{orderValue}</h2>
       <Footer />
     </div>
   );
