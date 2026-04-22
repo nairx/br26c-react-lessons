@@ -1,107 +1,131 @@
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import { useState, useEffect } from "react";
-import "./App.css";
+import { useEffect, useState } from "react";
+import axios from "axios";
 export default function App() {
-  const [cart, setCart] = useState([]);
-  const [orderValue, setOrderValue] = useState(0);
-  const products = [
-    {
-      id: 1,
-      imgUrl: "1.PNG",
-      name: "Product 1",
-      price: 30,
-      desc: "This is the descript of the product",
-    },
-    {
-      id: 2,
-      imgUrl: "2.PNG",
-      name: "Product 2",
-      price: 50,
-      desc: "This is the descript of the product",
-    },
-    {
-      id: 3,
-      imgUrl: "3.PNG",
-      name: "Product 3",
-      price: 45,
-      desc: "This is the descript of the product",
-    },
-  ];
-
-  //find if product 1 exists in cart array or not
-
-  const addToCart = (product) => {
-    const found = cart.find((item) => item.id === product.id);
-    if (!found) {
-      setCart([...cart, { ...product, quantity: 1 }]);
-    }
+  const url = "https://jsonplaceholder.typicode.com/users";
+  const [users, setUsers] = useState([]);
+  const fetchUsers = async () => {
+    const res = await axios(url);
+    setUsers(res.data);
   };
-
-  const increment = (id) => {
-    setCart(
-      cart.map((item) => {
-        if (item.id === id) {
-          item.quantity = item.quantity + 1;
-        }
-        return item;
-      }),
-    );
-  };
-
-  const decrement = (id) => {
-    setCart(
-      cart
-        .map((item) => {
-          if (item.id === id && item.quantity > 0) {
-            item.quantity = item.quantity - 1;
-          }
-          return item;
-        })
-        .filter((item) => item.quantity > 0),
-    );
-  };
-
   useEffect(() => {
-    setOrderValue(
-      cart.reduce((total, item) => {
-        return total + item.price * item.quantity;
-      }, 0),
-    );
-  }, [cart]);
-
+    fetchUsers();
+  }, []);
   return (
     <div>
-      <Header />
-      <div className="row">
-        {products &&
-          products.map((product) => (
-            <div key={product.id}>
-              <img src={product.imgUrl} width="300px" alt="" />
-              <h3>{product.name}</h3>
-              <p>{product.desc}</p>
-              <h4>{product.price}</h4>
-              <button onClick={() => addToCart(product)}>Add to Cart</button>
-            </div>
-          ))}
-      </div>
-      <hr />
-      <h1>My Cart</h1>
-      {cart &&
-        cart.map((item) => (
-          <li>
-            {item.name}-{item.price}-
-            <button onClick={() => decrement(item.id)}>-</button>
-            {item.quantity}
-            <button onClick={() => increment(item.id)}>+</button>-
-            {item.price * item.quantity}-<button>Delete</button>
-          </li>
-        ))}
-      <h2>Order Value:{orderValue}</h2>
-      <Footer />
+      {users && users.map((user) => <li key={user.id}>{user.name}</li>)}
     </div>
   );
 }
+
+// import Header from "./components/Header";
+// import Footer from "./components/Footer";
+// import { useState, useEffect } from "react";
+// import "./App.css";
+// export default function App() {
+//   const [cart, setCart] = useState([]);
+//   const [orderValue, setOrderValue] = useState(0);
+//   const products = [
+//     {
+//       id: 1,
+//       imgUrl: "1.PNG",
+//       name: "Product 1",
+//       price: 30,
+//       desc: "This is the descript of the product",
+//     },
+//     {
+//       id: 2,
+//       imgUrl: "2.PNG",
+//       name: "Product 2",
+//       price: 50,
+//       desc: "This is the descript of the product",
+//     },
+//     {
+//       id: 3,
+//       imgUrl: "3.PNG",
+//       name: "Product 3",
+//       price: 45,
+//       desc: "This is the descript of the product",
+//     },
+//   ];
+
+//   //find if product 1 exists in cart array or not
+
+//   const addToCart = (product) => {
+//     const found = cart.find((item) => item.id === product.id);
+//     if (!found) {
+//       setCart([...cart, { ...product, quantity: 1 }]);
+//     }
+//   };
+
+//   const increment = (id) => {
+//     setCart(
+//       cart.map((item) => {
+//         if (item.id === id) {
+//           item.quantity = item.quantity + 1;
+//         }
+//         return item;
+//       }),
+//     );
+//   };
+
+//   const decrement = (id) => {
+//     setCart(
+//       cart
+//         .map((item) => {
+//           if (item.id === id && item.quantity > 0) {
+//             item.quantity = item.quantity - 1;
+//           }
+//           return item;
+//         })
+//         .filter((item) => item.quantity > 0),
+//     );
+//   };
+
+//   const deleteItem = (id) => {
+//     setCart(cart.filter((item) => item.id !== id));
+//   };
+
+//   useEffect(() => {
+//     setOrderValue(
+//       cart.reduce((total, item) => {
+//         return total + item.price * item.quantity;
+//       }, 0),
+//     );
+//   }, [cart]);
+
+//   return (
+//     <div>
+//       <Header />
+//       <div className="row">
+//         {products &&
+//           products.map((product) => (
+//             <div key={product.id}>
+//               <img src={product.imgUrl} width="300px" alt="" />
+//               <h3>{product.name}</h3>
+//               <p>{product.desc}</p>
+//               <h4>{product.price}</h4>
+//               <button onClick={() => addToCart(product)}>Add to Cart</button>
+//             </div>
+//           ))}
+//       </div>
+//       <hr />
+//       <h1>My Cart</h1>
+//       {cart &&
+//         cart.map((item) => (
+//           <li>
+//             {item.name}-{item.price}-
+//             <button onClick={() => decrement(item.id)}>-</button>
+//             {item.quantity}
+//             <button onClick={() => increment(item.id)}>+</button>-
+//             {item.price * item.quantity}-
+//             <button onClick={() => deleteItem(item.id)}>Delete</button>
+//           </li>
+//         ))}
+//       <h2>Order Value:{orderValue}</h2>
+//       <Footer />
+//     </div>
+//   );
+// }
 
 // import Header from "./components/Header";
 // import Footer from "./components/Footer";
