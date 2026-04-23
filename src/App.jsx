@@ -1,15 +1,16 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 export default function App() {
   const [num, setNum] = useState(0);
   const [flag, setFlag] = useState(0);
   const expensiveCalculation = () => {
     console.log("Result function called");
-    let i
-    for(i=0;i<=1000;i++){}
+    let i;
+    for (i = 0; i <= 1000; i++) {}
     return i * num;
   };
-  const result = expensiveCalculation()
+  // const result = expensiveCalculation()
+  const result = useMemo(() => expensiveCalculation(), [num]);
   return (
     <div>
       <button onClick={() => setNum(num + 1)}>Num-{num}</button>
