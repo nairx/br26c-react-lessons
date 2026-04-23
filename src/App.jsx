@@ -1,36 +1,53 @@
 import React, { useState } from "react";
+import Child1 from "./components/Child1";
+import Child2 from "./components/Child2";
 export default function App() {
-  const [basket1, setBasket1] = useState(["Item1", "Item2", "Item3"]);
-   const [basket2, setBasket2] = useState([]);
-   const [item,setItem] = useState()
-   const rightArrow = () => {
-
-   }
-   const leftArrow = () => {
-    
-   }
+  const [num1, setNum1] = useState(0);
+  const [num2, setNum2] = useState(0);
   return (
-    <div style={{display:'flex',justifyContent:'center'}}>
-      <div>
-        <select multiple>
-          {basket1 &&
-            basket1.map((item) => <option value={item}>{item}</option>)}
-        </select>
-      </div>
-      <div>
-        <p><button>&gt;</button></p>
-        <p><button>&lt;</button></p>
-
-      </div>
-      <div>
-        <select multiple>
-          {basket2 &&
-            basket2.map((item) => <option value={item}>{item}</option>)}
-        </select>
-      </div>
+    <div>
+      <button onClick={() => setNum1(num1 + 1)}>Update Num1 {num1}</button>
+      <button onClick={() => setNum2(num2 + 1)}>Update Num2 {num2}</button>
+      <hr />
+      <Child1 val={num1} />
+      <Child2 val={num2} />
     </div>
   );
 }
+
+// import React, { useState } from "react";
+// export default function App() {
+//   const [basket1, setBasket1] = useState(["Item1", "Item2", "Item3"]);
+//    const [basket2, setBasket2] = useState([]);
+//    const [item,setItem] = useState()
+//    const rightArrow = () => {
+
+//    }
+//    const leftArrow = () => {
+
+//    }
+//   return (
+//     <div style={{display:'flex',justifyContent:'center'}}>
+//       <div>
+//         <select multiple>
+//           {basket1 &&
+//             basket1.map((item) => <option value={item}>{item}</option>)}
+//         </select>
+//       </div>
+//       <div>
+//         <p><button>&gt;</button></p>
+//         <p><button>&lt;</button></p>
+
+//       </div>
+//       <div>
+//         <select multiple>
+//           {basket2 &&
+//             basket2.map((item) => <option value={item}>{item}</option>)}
+//         </select>
+//       </div>
+//     </div>
+//   );
+// }
 
 // import React from "react";
 // import { useState } from "react";
