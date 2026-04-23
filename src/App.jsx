@@ -1,12 +1,31 @@
 import React, { useState } from "react";
 export default function App() {
   const [basket1, setBasket1] = useState(["Item1", "Item2", "Item3"]);
+   const [basket2, setBasket2] = useState([]);
+   const [item,setItem] = useState()
+   const rightArrow = () => {
+
+   }
+   const leftArrow = () => {
+    
+   }
   return (
-    <div>
+    <div style={{display:'flex',justifyContent:'center'}}>
       <div>
         <select multiple>
           {basket1 &&
             basket1.map((item) => <option value={item}>{item}</option>)}
+        </select>
+      </div>
+      <div>
+        <p><button>&gt;</button></p>
+        <p><button>&lt;</button></p>
+
+      </div>
+      <div>
+        <select multiple>
+          {basket2 &&
+            basket2.map((item) => <option value={item}>{item}</option>)}
         </select>
       </div>
     </div>
