@@ -13,6 +13,13 @@ export default function App() {
   const handleAdd = (product) => {
     setCart([...cart, product]);
   };
+
+  const findItem = (id) => {
+    const found = cart.find((item) => item.id === id);
+    if (found) return true;
+    else false;
+  };
+
   return (
     <div>
       {products &&
@@ -21,7 +28,12 @@ export default function App() {
             <h1>{product.name}</h1>
             <p>{product.desc}</p>
             <h3>{product.price}</h3>
-            <button onClick={()=>handleAdd(product)}>Add to Cart</button>
+            <button
+              onClick={() => handleAdd(product)}
+              disabled={findItem(product.id) ? true : false}
+            >
+              Add to Cart
+            </button>
           </div>
         ))}
       <hr />
@@ -29,6 +41,14 @@ export default function App() {
     </div>
   );
 }
+
+  // {!findItem(product.id) ? (
+            //   <button onClick={() => handleAdd(product)}>Add to Cart</button>
+            // ) : (
+            //   <button disabled>Add to Cart</button>
+            // )}
+
+            
 
 // import React, { useEffect, useState } from "react";
 // import { useRef } from "react";
