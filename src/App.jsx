@@ -1,11 +1,24 @@
 import React from "react";
 import { useState } from "react";
+import ProductCard from "./components/ProductCard";
 export default function App() {
   const [cart, setCart] = useState([]);
   const products = [
     {
       id: 1,
       name: "Product 1",
+      desc: "This is the desc of the produduct",
+      price: 30,
+    },
+    {
+      id: 2,
+      name: "Product 2",
+      desc: "This is the desc of the produduct",
+      price: 30,
+    },
+    {
+      id: 3,
+      name: "Product 3",
       desc: "This is the desc of the produduct",
       price: 30,
     },
@@ -22,33 +35,27 @@ export default function App() {
 
   return (
     <div>
-      {products &&
-        products.map((product) => (
-          <div key={product.id}>
-            <h1>{product.name}</h1>
-            <p>{product.desc}</p>
-            <h3>{product.price}</h3>
-            <button
-              onClick={() => handleAdd(product)}
-              disabled={findItem(product.id) ? true : false}
-            >
-              Add to Cart
-            </button>
-          </div>
-        ))}
+      {products && products.map((product) => <ProductCard product={product} />)}
       <hr />
       {cart && cart.map((item) => <li key={item.id}>{item.name}</li>)}
     </div>
   );
 }
 
-  // {!findItem(product.id) ? (
-            //   <button onClick={() => handleAdd(product)}>Add to Cart</button>
-            // ) : (
-            //   <button disabled>Add to Cart</button>
-            // )}
+{
+  /* <button
+              onClick={() => handleAdd(product)}
+              disabled={findItem(product.id) ? true : false}
+            >
+              Add to Cart
+            </button> */
+}
 
-            
+// {!findItem(product.id) ? (
+//   <button onClick={() => handleAdd(product)}>Add to Cart</button>
+// ) : (
+//   <button disabled>Add to Cart</button>
+// )}
 
 // import React, { useEffect, useState } from "react";
 // import { useRef } from "react";
