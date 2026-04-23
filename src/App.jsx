@@ -1,14 +1,20 @@
 import React from "react";
+import { createContext,useState } from "react";
 import Product from "./components/Product";
 import Cart from "./components/Cart";
+export const AppContext = createContext();
 export default function App() {
+  const [counter, setCounter] = useState(0);
   return (
-    <div style={{display:'flex',backgroundColor:'gray',padding:'15px'}}>
-    
-      <Product />
-      <hr />
-      <Cart />
-    </div>
+    <AppContext.provider value={{ counter, setCounter }}>
+      <div
+        style={{ display: "flex", backgroundColor: "gray", padding: "15px" }}
+      >
+        <Product />
+        <hr />
+        <Cart />
+      </div>
+    </AppContext.provider>
   );
 }
 

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
+import {AppContext} from "../App"
 export default function Product() {
-  const [counter, setCounter] = useState(0);
+  const {counter,setCounter} = useContext(AppContext)
   return (
     <div style={{backgroundColor:'orange',padding:'10px'}}>
       Product
