@@ -1,46 +1,73 @@
 import React from "react";
 import { useState } from "react";
-import ProductCard from "./components/ProductCard";
 export default function App() {
-  const [cart, setCart] = useState([]);
-  const products = [
-    {
-      id: 1,
-      name: "Product 1",
-      desc: "This is the desc of the produduct",
-      price: 30,
-    },
-    {
-      id: 2,
-      name: "Product 2",
-      desc: "This is the desc of the produduct",
-      price: 30,
-    },
-    {
-      id: 3,
-      name: "Product 3",
-      desc: "This is the desc of the produduct",
-      price: 30,
-    },
-  ];
-  const handleAdd = (product) => {
-    setCart([...cart, product]);
-  };
-
-  const findItem = (id) => {
-    const found = cart.find((item) => item.id === id);
-    if (found) return true;
-    else false;
-  };
-
+  const [notes,setNotes] = useState([])
+  const [text,setText] = useState()
+  const handleSave = () => {
+    setNotes([...notes,text])
+  }
   return (
     <div>
-      {products && products.map((product) => <ProductCard product={product} />)}
+      <h1>My Notes</h1>
+      <p>
+        <textarea rows="5" cols="50" onChange={(e)=>setText(e.target.value)}></textarea>
+      </p>
+      <p>
+        <button onClick={handleSave}>Save</button>
+      </p>
       <hr />
-      {cart && cart.map((item) => <li key={item.id}>{item.name}</li>)}
+      <ol>
+      {notes && notes.map((note,idx)=>(
+        <li key={idx}>{note}-<button>Delete</button></li>
+      ))}
+      </ol>
     </div>
   );
 }
+
+// import React from "react";
+// import { useState } from "react";
+// import ProductCard from "./components/ProductCard";
+// export default function App() {
+//   const [cart, setCart] = useState([]);
+//   const products = [
+//     {
+//       id: 1,
+//       name: "Product 1",
+//       desc: "This is the desc of the produduct",
+//       price: 30,
+//     },
+//     {
+//       id: 2,
+//       name: "Product 2",
+//       desc: "This is the desc of the produduct",
+//       price: 30,
+//     },
+//     {
+//       id: 3,
+//       name: "Product 3",
+//       desc: "This is the desc of the produduct",
+//       price: 30,
+//     },
+//   ];
+//   const handleAdd = (product) => {
+//     setCart([...cart, product]);
+//   };
+
+//   const findItem = (id) => {
+//     const found = cart.find((item) => item.id === id);
+//     if (found) return true;
+//     else false;
+//   };
+
+//   return (
+//     <div>
+//       {products && products.map((product) => <ProductCard product={product} />)}
+//       <hr />
+//       {cart && cart.map((item) => <li key={item.id}>{item.name}</li>)}
+//     </div>
+//   );
+// }
 
 {
   /* <button
