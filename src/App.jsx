@@ -1,26 +1,58 @@
-import React, { useEffect, useState } from "react";
-import { useRef } from "react";
+import React from "react";
+import { useState } from "react";
 export default function App() {
-  const [number, setNumber] = useState();
-  const prevNum = useRef();
-  const msgRef = useRef();
-  useEffect(() => {
-    prevNum.current = number;
-    if (prevNum.current > number) {
-      msgRef.current.style.color = "red";
-    } else {
-      msgRef.current.style.color = "green";
-    }
-  }, [number]);
+  const [cart, setCart] = useState([]);
+  const products = [
+    {
+      id: 1,
+      name: "Product 1",
+      desc: "This is the desc of the produduct",
+      price: 30,
+    },
+  ];
+  const handleAdd = (product) => {
+    setCart([...cart, product]);
+  };
   return (
     <div>
-      <p ref={msgRef}>{number}</p>
-      <p>
-        <input type="number" onChange={(e) => setNumber(e.target.value)} />
-      </p>
+      {products &&
+        products.map((product) => (
+          <div key={product.id}>
+            <h1>{product.name}</h1>
+            <p>{product.desc}</p>
+            <h3>{product.price}</h3>
+            <button onClick={()=>handleAdd(product)}>Add to Cart</button>
+          </div>
+        ))}
+      <hr />
+      {cart && cart.map((item) => <li key={item.id}>{item.name}</li>)}
     </div>
   );
 }
+
+// import React, { useEffect, useState } from "react";
+// import { useRef } from "react";
+// export default function App() {
+//   const [number, setNumber] = useState();
+//   const prevNum = useRef();
+//   const msgRef = useRef();
+//   useEffect(() => {
+//     if (prevNum.current > number) {
+//       msgRef.current.style.color = "red";
+//     } else {
+//       msgRef.current.style.color = "green";
+//     }
+//     prevNum.current = number;
+//   }, [number]);
+//   return (
+//     <div>
+//       <p ref={msgRef}>{number}</p>
+//       <p>
+//         <input type="number" onChange={(e) => setNumber(e.target.value)} />
+//       </p>
+//     </div>
+//   );
+// }
 
 // import React, { useState } from "react";
 // import { useRef } from "react";
