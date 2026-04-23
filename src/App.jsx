@@ -3,7 +3,8 @@ import Product from "./components/Product";
 import Cart from "./components/Cart";
 export default function App() {
   return (
-    <div>
+    <div style={{display:'flex',backgroundColor:'gray',padding:'15px'}}>
+    
       <Product />
       <hr />
       <Cart />
