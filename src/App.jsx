@@ -1,25 +1,38 @@
 import React from "react";
-import { useState, useMemo } from "react";
+import Product from "./components/Product";
+import Cart from "./components/Cart";
 export default function App() {
-  const [num, setNum] = useState(0);
-  const [flag, setFlag] = useState(0);
-  const expensiveCalculation = () => {
-    console.log("Result function called");
-    let i;
-    for (i = 0; i <= 1000; i++) {}
-    return i * num;
-  };
-  // const result = expensiveCalculation()
-  const result = useMemo(() => expensiveCalculation(), [num]);
   return (
     <div>
-      <button onClick={() => setNum(num + 1)}>Num-{num}</button>
-      <button onClick={() => setFlag(flag + 1)}>Flag-{flag}</button>
+      <Product />
       <hr />
-      {result}
+      <Cart />
     </div>
   );
 }
+
+// import React from "react";
+// import { useState, useMemo } from "react";
+// export default function App() {
+//   const [num, setNum] = useState(0);
+//   const [flag, setFlag] = useState(0);
+//   const expensiveCalculation = () => {
+//     console.log("expensiveCalculation function called");
+//     let i;
+//     for (i = 0; i < 1000; i++) {}
+//     return i * num;
+//   };
+//   // const result = expensiveCalculation()
+//   const result = useMemo(() => expensiveCalculation(), [num]);
+//   return (
+//     <div>
+//       <button onClick={() => setNum(num + 1)}>Num-{num}</button>
+//       <button onClick={() => setFlag(flag + 1)}>Flag-{flag}</button>
+//       <hr />
+//       {result}
+//     </div>
+//   );
+// }
 
 // import React, { useState } from "react";
 // import Child1 from "./components/Child1";
