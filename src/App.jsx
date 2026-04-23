@@ -1,19 +1,38 @@
-import React, { useState } from "react";
-import Child1 from "./components/Child1";
-import Child2 from "./components/Child2";
+import React from "react";
+import { useState } from "react";
 export default function App() {
-  const [num1, setNum1] = useState(0);
-  const [num2, setNum2] = useState(0);
+  const [num, setNum] = useState(0);
+  const [flag, setFlag] = useState(0);
+  const result = () => {
+    console.log("Result function called");
+    return 2 * num;
+  };
   return (
     <div>
-      <button onClick={() => setNum1(num1 + 1)}>Update Num1 {num1}</button>
-      <button onClick={() => setNum2(num2 + 1)}>Update Num2 {num2}</button>
+      <button onClick={() => setNum(num + 1)}>Num-{num}</button>
+      <button onClick={() => setFlag(flag + 1)}>Flag-{flag}</button>
       <hr />
-      <Child1 val={num1} />
-      <Child2 val={num2} />
+      {result}
     </div>
   );
 }
+
+// import React, { useState } from "react";
+// import Child1 from "./components/Child1";
+// import Child2 from "./components/Child2";
+// export default function App() {
+//   const [num1, setNum1] = useState(0);
+//   const [num2, setNum2] = useState(0);
+//   return (
+//     <div>
+//       <button onClick={() => setNum1(num1 + 1)}>Update Num1 {num1}</button>
+//       <button onClick={() => setNum2(num2 + 1)}>Update Num2 {num2}</button>
+//       <hr />
+//       <Child1 val={num1} />
+//       <Child2 val={num2} />
+//     </div>
+//   );
+// }
 
 // import React, { useState } from "react";
 // export default function App() {
