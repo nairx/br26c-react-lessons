@@ -3,10 +3,13 @@ import { useState } from "react";
 export default function App() {
   const [num, setNum] = useState(0);
   const [flag, setFlag] = useState(0);
-  const result = () => {
+  const expensiveCalculation = () => {
     console.log("Result function called");
-    return 2 * num;
+    let i
+    for(i=0;i<=1000;i++){}
+    return i * num;
   };
+  const result = expensiveCalculation()
   return (
     <div>
       <button onClick={() => setNum(num + 1)}>Num-{num}</button>
