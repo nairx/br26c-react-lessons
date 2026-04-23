@@ -1,29 +1,44 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 export default function App() {
-  const [notes,setNotes] = useState([])
-  const [text,setText] = useState()
-  const handleSave = () => {
-    setNotes([...notes,text])
-  }
+  const [basket1, setBasket1] = useState(["Item1", "Item2", "Item3"]);
   return (
     <div>
-      <h1>My Notes</h1>
-      <p>
-        <textarea rows="5" cols="50" onChange={(e)=>setText(e.target.value)}></textarea>
-      </p>
-      <p>
-        <button onClick={handleSave}>Save</button>
-      </p>
-      <hr />
-      <ol>
-      {notes && notes.map((note,idx)=>(
-        <li key={idx}>{note}-<button>Delete</button></li>
-      ))}
-      </ol>
+      <div>
+        <select multiple>
+          {basket1 &&
+            basket1.map((item) => <option value={item}>{item}</option>)}
+        </select>
+      </div>
     </div>
   );
 }
+
+// import React from "react";
+// import { useState } from "react";
+// export default function App() {
+//   const [notes,setNotes] = useState([])
+//   const [text,setText] = useState()
+//   const handleSave = () => {
+//     setNotes([...notes,text])
+//   }
+//   return (
+//     <div>
+//       <h1>My Notes</h1>
+//       <p>
+//         <textarea rows="5" cols="50" onChange={(e)=>setText(e.target.value)}></textarea>
+//       </p>
+//       <p>
+//         <button onClick={handleSave}>Save</button>
+//       </p>
+//       <hr />
+//       <ol>
+//       {notes && notes.map((note,idx)=>(
+//         <li key={idx}>{note}-<button>Delete</button></li>
+//       ))}
+//       </ol>
+//     </div>
+//   );
+// }
 
 // import React from "react";
 // import { useState } from "react";
