@@ -9,6 +9,7 @@ import Register from "./components/Register";
 export const AppContext = createContext();
 export default function App() {
   const [cart, setCart] = useState([]);
+  const [users, setUsers] = useState([]);
   const router = createBrowserRouter([
     {
       path: "/",
@@ -23,7 +24,7 @@ export default function App() {
   ]);
   return (
     <div>
-      <AppContext.Provider value={{ cart, setCart }}>
+      <AppContext.Provider value={{ cart, setCart, users, setUsers }}>
         <RouterProvider router={router}></RouterProvider>
       </AppContext.Provider>
     </div>

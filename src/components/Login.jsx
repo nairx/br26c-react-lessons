@@ -3,7 +3,7 @@ import "./Login.css";
 import { Link } from "react-router-dom";
 export default function Login() {
   return (
-    <div className="box">
+    <div>
       <div>
         Login
         <p>
