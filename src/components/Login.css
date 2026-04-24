@@ -1,0 +1,12 @@
+.box{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    margin: auto;
+    width: 300px;
+    border:1px solid gray
+}
+.box input,button{
+    margin:5px;
+    padding:5px;
+}

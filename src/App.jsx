@@ -1,9 +1,11 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { createContext,useState } from "react";
+import { createContext, useState } from "react";
 import RootLayout from "./components/RootLayout";
 import Product from "./components/Product";
 import Cart from "./components/Cart";
+import Login from "./components/Login";
+import Register from "./components/Register";
 export const AppContext = createContext();
 export default function App() {
   const [cart, setCart] = useState([]);
@@ -14,6 +16,8 @@ export default function App() {
       children: [
         { index: true, element: <Product /> },
         { path: "cart", element: <Cart /> },
+        { path: "login", element: <Login /> },
+        { path: "register", element: <Register /> },
       ],
     },
   ]);
