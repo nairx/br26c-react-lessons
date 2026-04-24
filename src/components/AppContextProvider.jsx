@@ -6,13 +6,16 @@ export default function AppContextProvider({ children }) {
   const [cart, setCart] = useState([]);
   const [users, setUsers] = useState([]);
   const [currUser,setCurrUser] = useState({})
+  const [orders,setOrders] = useState([])
   const value = {
     cart,
     setCart,
     users,
     setUsers,
     currUser,
-    setCurrUser
+    setCurrUser,
+    orders,
+    setOrders
   };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }

@@ -6,6 +6,7 @@ import Product from "./components/Product";
 import Cart from "./components/Cart";
 import Login from "./components/Login";
 import Logout from "./components/Logout";
+import Order from "./components/Order";
 import Register from "./components/Register";
 import AppContextProvider from "./components/AppContextProvider";
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
       children: [
         { index: true, element: <Product /> },
         { path: "cart", element: <Cart /> },
+        { path: "order", element: <Order /> },
         { path: "login", element: <Login /> },
         { path: "logout", element: <Logout /> },
         { path: "register", element: <Register /> },

@@ -4,7 +4,7 @@ import { AppContext } from "./AppContextProvider";
 import { useContext } from "react";
 import App from "../App";
 export default function Header() {
-  const { currUser } = useContext(AppContext);
+  const { currUser,cart } = useContext(AppContext);
   console.log(currUser)
   return (
     <div className="header">
@@ -14,7 +14,10 @@ export default function Header() {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="cart">Cart</Link>
+          <Link to="cart">MyCart({cart.length})</Link>
+        </li>
+        <li>
+          <Link to="order">MyOrders</Link>
         </li>
         {currUser?.name ? (
           <li>
