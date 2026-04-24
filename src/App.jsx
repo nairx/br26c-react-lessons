@@ -1,25 +1,53 @@
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import { useState, useEffect } from "react";
-import { createContext } from "react";
+import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createContext,useState } from "react";
+import RootLayout from "./components/RootLayout";
 import Product from "./components/Product";
 import Cart from "./components/Cart";
-import "./App.css";
 export const AppContext = createContext();
 export default function App() {
   const [cart, setCart] = useState([]);
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <RootLayout />,
+      children: [
+        { index: true, element: <Product /> },
+        { path: "cart", element: <Cart /> },
+      ],
+    },
+  ]);
   return (
     <div>
       <AppContext.Provider value={{ cart, setCart }}>
-        <Header />
-        <Product />
-        <hr />
-        <Cart />
-        <Footer />
+        <RouterProvider router={router}></RouterProvider>
       </AppContext.Provider>
     </div>
   );
 }
+
+// import Header from "./components/Header";
+// import Footer from "./components/Footer";
+// import { useState, useEffect } from "react";
+// import { createContext } from "react";
+// import Product from "./components/Product";
+// import Cart from "./components/Cart";
+// import "./App.css";
+// export const AppContext = createContext();
+// export default function App() {
+//   const [cart, setCart] = useState([]);
+//   return (
+//     <div>
+//       <AppContext.Provider value={{ cart, setCart }}>
+//         <Header />
+//         <Product />
+//         <hr />
+//         <Cart />
+//         <Footer />
+//       </AppContext.Provider>
+//     </div>
+//   );
+// }
 
 // import React from "react";
 // import { createContext, useState } from "react";
