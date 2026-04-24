@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import { AppContext } from "../App";
+import { AppContext } from "./AppContextProvider";
 export default function Product() {
   const { cart, setCart } = useContext(AppContext);
   const products = [

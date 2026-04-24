@@ -1,15 +1,13 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { createContext, useState } from "react";
+import { useState } from "react";
 import RootLayout from "./components/RootLayout";
 import Product from "./components/Product";
 import Cart from "./components/Cart";
 import Login from "./components/Login";
 import Register from "./components/Register";
-export const AppContext = createContext();
+import AppContextProvider from "./components/AppContextProvider";
 export default function App() {
-  const [cart, setCart] = useState([]);
-  const [users, setUsers] = useState([]);
   const router = createBrowserRouter([
     {
       path: "/",
@@ -24,12 +22,27 @@ export default function App() {
   ]);
   return (
     <div>
-      <AppContext.Provider value={{ cart, setCart, users, setUsers }}>
+      <AppContextProvider>
         <RouterProvider router={router}></RouterProvider>
-      </AppContext.Provider>
+      </AppContextProvider>
     </div>
   );
 }
+
+// import React from "react";
+// import Temp from "./components/Temp";
+// import Temp1 from "./components/Temp1";
+// import Temp2 from "./components/Temp2";
+// export default function App() {
+//   return (
+//     <div>
+//       <Temp>
+//         <Temp1 />
+//         <Temp2 />
+//       </Temp>
+//     </div>
+//   );
+// }
 
 // import Header from "./components/Header";
 // import Footer from "./components/Footer";

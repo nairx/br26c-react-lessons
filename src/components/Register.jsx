@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AppContext } from "../App";
+import { AppContext } from "./AppContextProvider";
 import { useContext } from "react";
 export default function Register() {
   const { users, setUsers } = useContext(AppContext);

@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import { AppContext } from "../App";
+import { AppContext } from "./AppContextProvider";
 import { useState, useEffect } from "react";
 export default function Cart() {
   const [orderValue, setOrderValue] = useState(0);
