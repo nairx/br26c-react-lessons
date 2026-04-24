@@ -4,7 +4,7 @@ import { AppContext } from "./AppContextProvider";
 import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
 export default function Login() {
-  const { users, setUsers } = useContext(AppContext);
+  const { users, setUsers, currUser, setCurrUser } = useContext(AppContext);
   const Navigate = useNavigate();
   const [user, setUser] = useState({});
   const [msg, setMsg] = useState();
@@ -16,6 +16,7 @@ export default function Login() {
     if (!found) {
       setMsg("Invalid Credentials");
     } else {
+      setCurrUser({ name: found.name, email: found.email });
       Navigate("/");
     }
   };
