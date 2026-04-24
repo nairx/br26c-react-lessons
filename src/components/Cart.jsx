@@ -2,9 +2,11 @@ import React from "react";
 import { useContext } from "react";
 import { AppContext } from "./AppContextProvider";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 export default function Cart() {
   const [orderValue, setOrderValue] = useState(0);
-  const { cart, setCart } = useContext(AppContext);
+  const { cart, setCart, currUser } = useContext(AppContext);
+  const Navigate = useNavigate();
   const increment = (id) => {
     setCart(
       cart.map((item) => {
@@ -55,6 +57,13 @@ export default function Cart() {
           </li>
         ))}
       <h2>Order Value:{orderValue}</h2>
+      <p>
+        {currUser?.name ? (
+          <button>Place Order</button>
+        ) : (
+          <button onClick={() => Navigate("/login")}>Login to Order</button>
+        )}
+      </p>
     </div>
   );
 }
