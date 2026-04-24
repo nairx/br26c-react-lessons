@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../App";
 import { useContext } from "react";
 export default function Register() {
   const { users, setUsers } = useContext(AppContext);
-  const [ user, setUser ] = useState({});
+  const [user, setUser] = useState({});
+  const Navigate = useNavigate();
   const handleSubmit = () => {
     setUsers([...users, user]);
+    Navigate("/login");
   };
   return (
     <div>
