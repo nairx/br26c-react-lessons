@@ -1,11 +1,27 @@
 import React, { useEffect, useState } from "react";
-import useFetch from "./components/useFetch";
+
 export default function App() {
-  const data = useFetch("https://jsonplaceholder.typicode.com/users");
-  return (
-    <div>{data && data.map((item) => <li key={item.id}>{item.name}</li>)}</div>
-  );
+  const [timeLeft, setTimeLeft] = useState(60);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(timeLeft - 1);
+    }, [1000]);
+    setTimeout(() => {
+      clearInterval(timer);
+      return
+    }, [60000]);
+  }, [timeLeft]);
+  return <div>{timeLeft}s</div>;
 }
+
+// import React, { useEffect, useState } from "react";
+// import useFetch from "./components/useFetch";
+// export default function App() {
+//   const data = useFetch("https://jsonplaceholder.typicode.com/users");
+//   return (
+//     <div>{data && data.map((item) => <li key={item.id}>{item.name}</li>)}</div>
+//   );
+// }
 
 // import React, { useState, useCallback } from "react";
 // const Child = React.memo(({ onclick }) => {
