@@ -10,7 +10,7 @@ export default function Users() {
       {users &&
         users.map((user) => (
           <li>
-            {user.name}-{user.email}
+            {user.name}-{user.email}-{user.role}
           </li>
         ))}
         </ol>

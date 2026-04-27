@@ -4,8 +4,8 @@ import { AppContext } from "./AppContextProvider";
 import { useContext } from "react";
 import App from "../App";
 export default function Header() {
-  const { currUser,cart } = useContext(AppContext);
-  console.log(currUser)
+  const { currUser, cart } = useContext(AppContext);
+  console.log(currUser);
   return (
     <div className="header">
       <h1>My App</h1>
@@ -19,9 +19,12 @@ export default function Header() {
         <li>
           <Link to="order">MyOrders</Link>
         </li>
-         <li>
-          <Link to="admin">Admin</Link>
-        </li>
+        {currUser?.role === "admin" && (
+          <li>
+            <Link to="admin">Admin</Link>
+          </li>
+        )}
+
         {currUser?.name ? (
           <li>
             <Link to="logout">Logout</Link>
