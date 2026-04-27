@@ -1,22 +1,57 @@
-import React, { useEffect, useState,useMemo } from "react";
-export default function App() {
-  const [count, setCount] = useState(0);
-  console.log("App rendered");
-  let a = () => {
-    console.log("Fn a is called");
-    let i;
-    for (i = 1; i <= 1000; i++) {}
-    return i * 10;
-  };
-  let result = useMemo(() => a(), []);
+import React, { useState, useCallback } from "react";
+const Child = React.memo(({ onclick }) => {
+  console.log("Child Component rendered");
   return (
     <div>
-      {result}
+      <button onClick={onclick}>Click</button>
+    </div>
+  );
+});
+
+export default function App() {
+  const [count, setCount] = useState(0);
+  const handleClick = useCallback(() => {
+    console.log("Clicked...");
+  }, []);
+  return (
+    <div>
+      <Child onclick={handleClick} />
       <hr />
-      <button onClick={() => setCount(count + 1)}>Update Count{count}</button>
+      <button onClick={() => setCount(count + 1)}>Update {count}</button>
     </div>
   );
 }
+
+// import React, { useState } from "react";
+
+// const Child = React.memo(({num}) => {
+//   console.log("Child Component rendered");
+//   return <div>{num + 5}</div>;
+// });
+
+// export default function App() {
+//   const [count, setCount] = useState(0);
+//   return (
+//     <div>
+//       <Child num={5} />
+//       <hr />
+//       <button onClick={() => setCount(count + 1)}>Update {count}</button>
+//     </div>
+//   );
+// }
+
+// import React, { useEffect, useState, useMemo } from "react";
+// export default function App() {
+//   useEffect(() => {
+//     const timer = setInterval(() => {
+//       console.log("Ticking...");
+//     }, [1000]);
+//     setTimeout(() => {
+//       clearInterval(timer);
+//     }, [5000]);
+//   }, []);
+//   return <div></div>;
+// }
 
 // import React from "react";
 // import { createBrowserRouter, RouterProvider } from "react-router-dom";
