@@ -13,13 +13,16 @@ import AdminLayout from "./components/AdminLayout";
 import Products from "./components/Products";
 import Users from "./components/Users";
 import Orders from "./components/Orders";
+import ErrorPageGlobal from "./components/ErrorPageGlobal";
+import ErrorPage from "./components/ErrorPage";
 export default function App() {
   const router = createBrowserRouter([
     {
       path: "/",
       element: <RootLayout />,
+      errorElement:<ErrorPageGlobal/>,
       children: [
-        { index: true, element: <Product /> },
+        { index: true, element: <Product />,errorElement:<ErrorPage/> },
         { path: "cart", element: <Cart /> },
         { path: "order", element: <Order /> },
         { path: "login", element: <Login /> },
@@ -45,6 +48,9 @@ export default function App() {
     </div>
   );
 }
+
+
+
 
 // import React from "react";
 // import Temp from "./components/Temp";
