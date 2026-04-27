@@ -1,17 +1,60 @@
 import React, { useEffect, useState } from "react";
 
+const Question = ({ q }) => {
+  console.log("Question component rendered");
+  const questions = [
+    {
+      id: 1,
+      question: "Question 1",
+      options: ["one", "two", "three", "four"],
+      answer: 0,
+    },
+    {
+      id: 2,
+      question: "Question 2",
+      options: ["one", "two", "three", "four"],
+      answer: 0,
+    },
+    {
+      id: 3,
+      question: "Question 3",
+      options: ["one", "two", "three", "four"],
+      answer: 0,
+    },
+  ];
+  return (
+    <div>
+      <h2>{questions[q].question}</h2>
+    </div>
+  );
+};
+
 export default function App() {
   const [timeLeft, setTimeLeft] = useState(60);
+  const [qNum, setQNum] = useState(0);
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft(timeLeft - 1);
-    }, [1000]);
+    }, 1000);
     setTimeout(() => {
       clearInterval(timer);
-      return
     }, [60000]);
+
+    return () => {
+      clearInterval(timer);
+    };
   }, [timeLeft]);
-  return <div>{timeLeft}s</div>;
+  return (
+    <div>
+      <p>{timeLeft}s</p>
+      <div>
+        <Question q={qNum} />
+        <p>
+          <button onClick={() => setQNum(qNum + 1)}>Next</button>
+        </p>
+      </div>
+    </div>
+  );
 }
 
 // import React, { useEffect, useState } from "react";
