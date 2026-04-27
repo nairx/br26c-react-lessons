@@ -38,6 +38,7 @@ export default function App() {
     }, 1000);
     setTimeout(() => {
       clearInterval(timer);
+      return
     }, [60000]);
 
     return () => {
