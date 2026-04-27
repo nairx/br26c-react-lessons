@@ -1,26 +1,35 @@
-import React, { useState, useCallback } from "react";
-const Child = React.memo(({ onclick }) => {
-  console.log("Child Component rendered");
-  return (
-    <div>
-      <button onClick={onclick}>Click</button>
-    </div>
-  );
-});
-
+import React, { useEffect, useState } from "react";
+import useFetch from "./components/useFetch";
 export default function App() {
-  const [count, setCount] = useState(0);
-  const handleClick = useCallback(() => {
-    console.log("Clicked...");
-  }, []);
+  const data = useFetch("https://jsonplaceholder.typicode.com/users");
   return (
-    <div>
-      <Child onclick={handleClick} />
-      <hr />
-      <button onClick={() => setCount(count + 1)}>Update {count}</button>
-    </div>
+    <div>{data && data.map((item) => <li key={item.id}>{item.name}</li>)}</div>
   );
 }
+
+// import React, { useState, useCallback } from "react";
+// const Child = React.memo(({ onclick }) => {
+//   console.log("Child Component rendered");
+//   return (
+//     <div>
+//       <button onClick={onclick}>Click</button>
+//     </div>
+//   );
+// });
+
+// export default function App() {
+//   const [count, setCount] = useState(0);
+//   const handleClick = useCallback(() => {
+//     console.log("Clicked...");
+//   }, []);
+//   return (
+//     <div>
+//       <Child onclick={handleClick} />
+//       <hr />
+//       <button onClick={() => setCount(count + 1)}>Update {count}</button>
+//     </div>
+//   );
+// }
 
 // import React, { useState } from "react";
 
