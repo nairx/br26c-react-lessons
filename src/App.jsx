@@ -1,56 +1,73 @@
-import React from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { useState } from "react";
-import RootLayout from "./components/RootLayout";
-import Product from "./components/Product";
-import Cart from "./components/Cart";
-import Login from "./components/Login";
-import Logout from "./components/Logout";
-import Order from "./components/Order";
-import Register from "./components/Register";
-import AppContextProvider from "./components/AppContextProvider";
-import AdminLayout from "./components/AdminLayout";
-import Products from "./components/Products";
-import Users from "./components/Users";
-import Orders from "./components/Orders";
-import ErrorPageGlobal from "./components/ErrorPageGlobal";
-import ErrorPage from "./components/ErrorPage";
+import React, { useEffect, useState,useMemo } from "react";
 export default function App() {
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <RootLayout />,
-      errorElement:<ErrorPageGlobal/>,
-      children: [
-        { index: true, element: <Product />,errorElement:<ErrorPage/> },
-        { path: "cart", element: <Cart /> },
-        { path: "order", element: <Order /> },
-        { path: "login", element: <Login /> },
-        { path: "logout", element: <Logout /> },
-        { path: "register", element: <Register /> },
-        {
-          path: "admin",
-          element: <AdminLayout />,
-          children: [
-            { index: true, element: <Users /> },
-            { path: "products", element: <Products /> },
-            { path: "orders", element: <Orders /> },
-          ],
-        },
-      ],
-    },
-  ]);
+  const [count, setCount] = useState(0);
+  console.log("App rendered");
+  let a = () => {
+    console.log("Fn a is called");
+    let i;
+    for (i = 1; i <= 1000; i++) {}
+    return i * 10;
+  };
+  let result = useMemo(() => a(), []);
   return (
     <div>
-      <AppContextProvider>
-        <RouterProvider router={router}></RouterProvider>
-      </AppContextProvider>
+      {result}
+      <hr />
+      <button onClick={() => setCount(count + 1)}>Update Count{count}</button>
     </div>
   );
 }
 
-
-
+// import React from "react";
+// import { createBrowserRouter, RouterProvider } from "react-router-dom";
+// import { useState } from "react";
+// import RootLayout from "./components/RootLayout";
+// import Product from "./components/Product";
+// import Cart from "./components/Cart";
+// import Login from "./components/Login";
+// import Logout from "./components/Logout";
+// import Order from "./components/Order";
+// import Register from "./components/Register";
+// import AppContextProvider from "./components/AppContextProvider";
+// import AdminLayout from "./components/AdminLayout";
+// import Products from "./components/Products";
+// import Users from "./components/Users";
+// import Orders from "./components/Orders";
+// import ErrorPageGlobal from "./components/ErrorPageGlobal";
+// import ErrorPage from "./components/ErrorPage";
+// export default function App() {
+//   const router = createBrowserRouter([
+//     {
+//       path: "/",
+//       element: <RootLayout />,
+//       errorElement:<ErrorPageGlobal/>,
+//       children: [
+//         { index: true, element: <Product />,errorElement:<ErrorPage/> },
+//         { path: "cart", element: <Cart /> },
+//         { path: "order", element: <Order /> },
+//         { path: "login", element: <Login /> },
+//         { path: "logout", element: <Logout /> },
+//         { path: "register", element: <Register /> },
+//         {
+//           path: "admin",
+//           element: <AdminLayout />,
+//           children: [
+//             { index: true, element: <Users /> },
+//             { path: "products", element: <Products /> },
+//             { path: "orders", element: <Orders /> },
+//           ],
+//         },
+//       ],
+//     },
+//   ]);
+//   return (
+//     <div>
+//       <AppContextProvider>
+//         <RouterProvider router={router}></RouterProvider>
+//       </AppContextProvider>
+//     </div>
+//   );
+// }
 
 // import React from "react";
 // import Temp from "./components/Temp";

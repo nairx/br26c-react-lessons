@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-// import { AppContext } from "./AppContextProvider";
+import { AppContext } from "./AppContextProvider";
 export default function Product() {
   const { cart, setCart, products, setProducts } = useContext(AppContext);
   const addToCart = (product) => {
@@ -9,6 +9,7 @@ export default function Product() {
       setCart([...cart, { ...product, quantity: 1 }]);
     }
   };
+  throw new Error("Home Page crashed");
   return (
     <div style={{ display: "flex" }}>
       {products &&
