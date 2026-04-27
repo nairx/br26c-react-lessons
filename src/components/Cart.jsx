@@ -60,7 +60,7 @@ export default function Cart() {
       email: currUser.email,
       items: cart,
       orderDate: Date(),
-      orderValue,
+      orderValue:orderTotal,
       status: "Pending",
     };
     setOrders([...orders, order]);

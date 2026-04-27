@@ -7,7 +7,7 @@ export default function Register() {
   const [user, setUser] = useState({});
   const Navigate = useNavigate();
   const handleSubmit = () => {
-    setUsers([...users, user]);
+    setUsers([...users, {...user,role:"customer"}]);
     Navigate("/login");
   };
   return (
