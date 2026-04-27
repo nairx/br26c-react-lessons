@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { AppContext } from "./AppContextProvider";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import Order from "./Order";
 export default function Cart() {
@@ -36,12 +36,22 @@ export default function Cart() {
     setCart(cart.filter((item) => item.id !== id));
   };
 
-  useEffect(() => {
-    setOrderValue(
-      cart.reduce((total, item) => {
-        return total + item.price * item.quantity;
-      }, 0),
-    );
+  console.log("Component renderred");
+  // useEffect(() => {
+  //   setOrderValue(
+  //     cart.reduce((total, item) => {
+  //       return total + item.price * item.quantity;
+  //     }, 0),
+  //   );
+  // }, [cart]);
+
+  // useEffect(() => {
+  //   console.log("useEffect")
+  //   const orderTotal = 100;
+  // }, [cart]);
+
+  const orderTotal = useMemo(() => {
+    return cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   }, [cart]);
 
   const placeOrder = () => {
@@ -72,7 +82,8 @@ export default function Cart() {
             <button onClick={() => deleteItem(item.id)}>Delete</button>
           </li>
         ))}
-      <h2>Order Value:{orderValue}</h2>
+      {/* <h2>Order Value:{orderValue}</h2> */}
+      <h2>Order Value:{orderTotal}</h2>
       <p>
         {currUser?.name ? (
           <button onClick={placeOrder}>Place Order</button>

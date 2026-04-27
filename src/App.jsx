@@ -9,6 +9,10 @@ import Logout from "./components/Logout";
 import Order from "./components/Order";
 import Register from "./components/Register";
 import AppContextProvider from "./components/AppContextProvider";
+import AdminLayout from "./components/AdminLayout";
+import Products from "./components/Products";
+import Users from "./components/Users";
+import Orders from "./components/Orders";
 export default function App() {
   const router = createBrowserRouter([
     {
@@ -21,6 +25,15 @@ export default function App() {
         { path: "login", element: <Login /> },
         { path: "logout", element: <Logout /> },
         { path: "register", element: <Register /> },
+        {
+          path: "admin",
+          element: <AdminLayout />,
+          children: [
+            { index: true, element: <Users /> },
+            { path: "products", element: <Products /> },
+            { path: "orders", element: <Orders /> },
+          ],
+        },
       ],
     },
   ]);

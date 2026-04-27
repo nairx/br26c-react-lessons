@@ -19,6 +19,9 @@ export default function Header() {
         <li>
           <Link to="order">MyOrders</Link>
         </li>
+         <li>
+          <Link to="admin">Admin</Link>
+        </li>
         {currUser?.name ? (
           <li>
             <Link to="logout">Logout</Link>
