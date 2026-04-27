@@ -30,16 +30,20 @@ const Question = ({ q }) => {
 };
 
 export default function App() {
-  const [timeLeft, setTimeLeft] = useState(60);
+  const [timeLeft, setTimeLeft] = useState(5);
   const [qNum, setQNum] = useState(0);
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft(timeLeft - 1);
+      if (timeLeft <= 0) {
+        clearInterval(timer);
+        return;
+      }
     }, 1000);
-    setTimeout(() => {
-      clearInterval(timer);
-      return
-    }, [60000]);
+    // setTimeout(() => {
+    //   clearInterval(timer);
+    //   return
+    // }, [60000]);
 
     return () => {
       clearInterval(timer);
