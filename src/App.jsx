@@ -1,25 +1,25 @@
-import React, { useState } from "react";
-import { useDeferredValue } from "react";
-export default function App() {
-  const [employees, setEmployees] = useState([]);
-  const [text, setText] = useState();
-  const deferredText = useDeferredValue(text)
-  fetch("https://jsonplaceholder.typicode.com/users")
-    .then((res) => res.json())
-    .then((data) =>
-      setEmployees(data.filter((elem) => elem.name.includes(deferredText))),
-    )
-    .catch((err) => console.log(err));
-  return (
-    <div>
-      <input type="text" onChange={(e) => setText(e.target.value)} />
-      <hr />
-      {employees && employees.map(employee => (
-        <li key={employee.id}>{employee.name}</li>
-      ))}
-    </div>
-  );
-}
+// import React, { useState } from "react";
+// import { useDeferredValue } from "react";
+// export default function App() {
+//   const [employees, setEmployees] = useState([]);
+//   const [text, setText] = useState();
+//   const deferredText = useDeferredValue(text)
+//   fetch("https://jsonplaceholder.typicode.com/users")
+//     .then((res) => res.json())
+//     .then((data) =>
+//       setEmployees(data.filter((elem) => elem.name.includes(deferredText))),
+//     )
+//     .catch((err) => console.log(err));
+//   return (
+//     <div>
+//       <input type="text" onChange={(e) => setText(e.target.value)} />
+//       <hr />
+//       {employees && employees.map(employee => (
+//         <li key={employee.id}>{employee.name}</li>
+//       ))}
+//     </div>
+//   );
+// }
 
 // import React, { useState, useTransition } from "react";
 // export default function App() {
@@ -64,58 +64,58 @@ export default function App() {
 //   );
 // }
 
-// import React from "react";
-// import { createBrowserRouter, RouterProvider } from "react-router-dom";
-// import { useState } from "react";
-// import RootLayout from "./components/RootLayout";
-// import Product from "./components/Product";
-// import Cart from "./components/Cart";
-// import Login from "./components/Login";
-// import Logout from "./components/Logout";
-// import Order from "./components/Order";
-// import Register from "./components/Register";
-// import AppContextProvider from "./components/AppContextProvider";
-// import AdminLayout from "./components/AdminLayout";
-// import Products from "./components/Products";
-// import Users from "./components/Users";
-// import Orders from "./components/Orders";
-// import ErrorPageGlobal from "./components/ErrorPageGlobal";
-// import ErrorPage from "./components/ErrorPage";
-// import ProductDetails from "./components/ProductDetails";
-// export default function App() {
-//   const router = createBrowserRouter([
-//     {
-//       path: "/",
-//       element: <RootLayout />,
-//       errorElement: <ErrorPageGlobal />,
-//       children: [
-//         { index: true, element: <Product />, errorElement: <ErrorPage /> },
-//         { path: "details/:id", element: <ProductDetails /> },
-//         { path: "cart", element: <Cart /> },
-//         { path: "order", element: <Order /> },
-//         { path: "login", element: <Login /> },
-//         { path: "logout", element: <Logout /> },
-//         { path: "register", element: <Register /> },
-//         {
-//           path: "admin",
-//           element: <AdminLayout />,
-//           children: [
-//             { index: true, element: <Users /> },
-//             { path: "products", element: <Products /> },
-//             { path: "orders", element: <Orders /> },
-//           ],
-//         },
-//       ],
-//     },
-//   ]);
-//   return (
-//     <div>
-//       <AppContextProvider>
-//         <RouterProvider router={router}></RouterProvider>
-//       </AppContextProvider>
-//     </div>
-//   );
-// }
+import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { useState } from "react";
+import RootLayout from "./components/RootLayout";
+import Product from "./components/Product";
+import Cart from "./components/Cart";
+import Login from "./components/Login";
+import Logout from "./components/Logout";
+import Order from "./components/Order";
+import Register from "./components/Register";
+import AppContextProvider from "./components/AppContextProvider";
+import AdminLayout from "./components/AdminLayout";
+import Products from "./components/Products";
+import Users from "./components/Users";
+import Orders from "./components/Orders";
+import ErrorPageGlobal from "./components/ErrorPageGlobal";
+import ErrorPage from "./components/ErrorPage";
+import ProductDetails from "./components/ProductDetails";
+export default function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <RootLayout />,
+      errorElement: <ErrorPageGlobal />,
+      children: [
+        { index: true, element: <Product />, errorElement: <ErrorPage /> },
+        { path: "details/:id", element: <ProductDetails /> },
+        { path: "cart", element: <Cart /> },
+        { path: "order", element: <Order /> },
+        { path: "login", element: <Login /> },
+        { path: "logout", element: <Logout /> },
+        { path: "register", element: <Register /> },
+        {
+          path: "admin",
+          element: <AdminLayout />,
+          children: [
+            { index: true, element: <Users /> },
+            { path: "products", element: <Products /> },
+            { path: "orders", element: <Orders /> },
+          ],
+        },
+      ],
+    },
+  ]);
+  return (
+    <div>
+      <AppContextProvider>
+        <RouterProvider router={router}></RouterProvider>
+      </AppContextProvider>
+    </div>
+  );
+}
 
 // import React, { useEffect, useState } from "react";
 // const Question = ({ q }) => {
