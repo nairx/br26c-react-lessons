@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-
+import { useDeferredValue } from "react";
 export default function App() {
   const [employees, setEmployees] = useState([]);
   const [text, setText] = useState();
+  const deferredText = useDeferredValue(text)
   fetch("https://jsonplaceholder.typicode.com/users")
     .then((res) => res.json())
     .then((data) =>
-      setEmployees(data.filter((elem) => elem.name.includes(text))),
+      setEmployees(data.filter((elem) => elem.name.includes(deferredText))),
     )
     .catch((err) => console.log(err));
   return (
