@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 export default function App() {
   const [products, setProducts] = useState([]);
+  const [product, setProduct] = useState({});
   const fetchProducts = async () => {
     const url = "http://localhost:3001/products";
     const res = await axios.get(url);
@@ -11,10 +12,57 @@ export default function App() {
   useEffect(() => {
     fetchProducts();
   }, []);
+
+  const handleDelete = async (id) => {
+    const url = "http://localhost:3001/products/" + id;
+    await axios.delete(url);
+    fetchProducts();
+  };
+
+  const handleAdd = async () => {
+    const url = "http://localhost:3001/products/";
+    const res = await axios.post(url, product);
+    fetchProducts();
+  };
+
   return (
     <div>
+      <p>
+        <input
+          type="number"
+          onChange={(e) => setProduct({ ...product, id: e.target.value })}
+          placeholder="Enter Id"
+        />
+        <input
+          type="text"
+          onChange={(e) => setProduct({ ...product, name: e.target.value })}
+          placeholder="Name"
+        />
+        <input
+          type="number"
+          onChange={(e) => setProduct({ ...product, price: e.target.value })}
+          placeholder="Price"
+        />
+        <input
+          type="text"
+          onChange={(e) => setProduct({ ...product, desc: e.target.value })}
+          placeholder="Description"
+        />
+        <input
+          type="text"
+          onChange={(e) => setProduct({ ...product, imgUrl: e.target.value })}
+          placeholder="Image Url"
+        />
+        <button onClick={handleAdd}>Add</button>
+      </p>
+
       {products &&
-        products.map((product) => <div key={product.id}>{product.name}-{product.price}-{product.desc}</div>)}
+        products.map((product) => (
+          <div key={product.id}>
+            {product.name}-{product.price}-{product.desc}-
+            <button onClick={() => handleDelete(product.id)}>Delete</button>
+          </div>
+        ))}
     </div>
   );
 }
