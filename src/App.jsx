@@ -1,68 +1,17 @@
 import React, { useEffect } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { useState } from "react";
+import EditProd from "./components/EditProd";
+import Prod from "./components/Prod";
 import axios from "axios";
 export default function App() {
-  const [products, setProducts] = useState([]);
-  const [product, setProduct] = useState({});
-  const fetchProducts = async () => {
-    const url = "http://localhost:3001/products";
-    const res = await axios.get(url);
-    setProducts(res.data);
-  };
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
-  const handleDelete = async (id) => {
-    const url = "http://localhost:3001/products/" + id;
-    await axios.delete(url);
-    fetchProducts();
-  };
-
-  const handleAdd = async () => {
-    const url = "http://localhost:3001/products/";
-    const res = await axios.post(url, product);
-    fetchProducts();
-  };
-
+  const router = createBrowserRouter([
+    { index: true, element: <Prod /> },
+    { path: "/:id", element: <EditProd /> },
+  ]);
   return (
     <div>
-      <p>
-        <input
-          type="number"
-          onChange={(e) => setProduct({ ...product, id: e.target.value })}
-          placeholder="Enter Id"
-        />
-        <input
-          type="text"
-          onChange={(e) => setProduct({ ...product, name: e.target.value })}
-          placeholder="Name"
-        />
-        <input
-          type="number"
-          onChange={(e) => setProduct({ ...product, price: e.target.value })}
-          placeholder="Price"
-        />
-        <input
-          type="text"
-          onChange={(e) => setProduct({ ...product, desc: e.target.value })}
-          placeholder="Description"
-        />
-        <input
-          type="text"
-          onChange={(e) => setProduct({ ...product, imgUrl: e.target.value })}
-          placeholder="Image Url"
-        />
-        <button onClick={handleAdd}>Add</button>
-      </p>
-
-      {products &&
-        products.map((product) => (
-          <div key={product.id}>
-            {product.name}-{product.price}-{product.desc}-
-            <button onClick={() => handleDelete(product.id)}>Delete</button>
-          </div>
-        ))}
+      <RouterProvider router={router}></RouterProvider>
     </div>
   );
 }
