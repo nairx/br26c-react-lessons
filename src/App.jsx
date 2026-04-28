@@ -1,60 +1,60 @@
-import React, { useEffect, useState } from "react";
-const Question = ({ q }) => {
-  console.log("Question component rendered");
-  const questions = [
-    {
-      id: 1,
-      question: "Question 1",
-      options: ["one", "two", "three", "four"],
-      answer: 0,
-    },
-    {
-      id: 2,
-      question: "Question 2",
-      options: ["one", "two", "three", "four"],
-      answer: 0,
-    },
-    {
-      id: 3,
-      question: "Question 3",
-      options: ["one", "two", "three", "four"],
-      answer: 0,
-    },
-  ];
-  return (
-    <div>
-      <h2>{questions[q].question}</h2>
-    </div>
-  );
-};
+// import React, { useEffect, useState } from "react";
+// const Question = ({ q }) => {
+//   console.log("Question component rendered");
+//   const questions = [
+//     {
+//       id: 1,
+//       question: "Question 1",
+//       options: ["one", "two", "three", "four"],
+//       answer: 0,
+//     },
+//     {
+//       id: 2,
+//       question: "Question 2",
+//       options: ["one", "two", "three", "four"],
+//       answer: 0,
+//     },
+//     {
+//       id: 3,
+//       question: "Question 3",
+//       options: ["one", "two", "three", "four"],
+//       answer: 0,
+//     },
+//   ];
+//   return (
+//     <div>
+//       <h2>{questions[q].question}</h2>
+//     </div>
+//   );
+// };
 
-export default function App() {
-  const [timeLeft, setTimeLeft] = useState(5);
-  const [qNum, setQNum] = useState(0);
-  useEffect(() => {
-    const timer = setInterval(() => {
-      if (timeLeft === 0) {
-        clearInterval(timer);
-        return;
-      }
-      setTimeLeft(timeLeft - 1);
-    }, 1000);
-    return () => {
-      clearInterval(timer);
-    };
-  }, [timeLeft]);
-  return (
-    <div>
-      <p>{timeLeft}s</p>
-      <div>
-        <Question q={qNum} />
-        <p>
-          <button onClick={() => setQNum(qNum + 1)}>Next</button>
-        </p>
-      </div>
-    </div>
-  );
-}
+// export default function App() {
+//   const [timeLeft, setTimeLeft] = useState(5);
+//   const [qNum, setQNum] = useState(0);
+//   useEffect(() => {
+//     const timer = setInterval(() => {
+//       if (timeLeft === 0) {
+//         clearInterval(timer);
+//         return;
+//       }
+//       setTimeLeft(timeLeft - 1);
+//     }, 1000);
+//     return () => {
+//       clearInterval(timer);
+//     };
+//   }, [timeLeft]);
+//   return (
+//     <div>
+//       <p>{timeLeft}s</p>
+//       <div>
+//         <Question q={qNum} />
+//         <p>
+//           <button onClick={() => setQNum(qNum + 1)}>Next</button>
+//         </p>
+//       </div>
+//     </div>
+//   );
+// }
 
 // import React, { useEffect, useState } from "react";
 // import useFetch from "./components/useFetch";
@@ -120,58 +120,58 @@ export default function App() {
 //   return <div></div>;
 // }
 
-// import React from "react";
-// import { createBrowserRouter, RouterProvider } from "react-router-dom";
-// import { useState } from "react";
-// import RootLayout from "./components/RootLayout";
-// import Product from "./components/Product";
-// import Cart from "./components/Cart";
-// import Login from "./components/Login";
-// import Logout from "./components/Logout";
-// import Order from "./components/Order";
-// import Register from "./components/Register";
-// import AppContextProvider from "./components/AppContextProvider";
-// import AdminLayout from "./components/AdminLayout";
-// import Products from "./components/Products";
-// import Users from "./components/Users";
-// import Orders from "./components/Orders";
-// import ErrorPageGlobal from "./components/ErrorPageGlobal";
-// import ErrorPage from "./components/ErrorPage";
-// import ProductDetails from "./components/ProductDetails";
-// export default function App() {
-//   const router = createBrowserRouter([
-//     {
-//       path: "/",
-//       element: <RootLayout />,
-//       errorElement: <ErrorPageGlobal />,
-//       children: [
-//         { index: true, element: <Product />, errorElement: <ErrorPage /> },
-//         { path: "cart", element: <Cart /> },
-//         { path: "details/:id", element: <ProductDetails /> },
-//         { path: "order", element: <Order /> },
-//         { path: "login", element: <Login /> },
-//         { path: "logout", element: <Logout /> },
-//         { path: "register", element: <Register /> },
-//         {
-//           path: "admin",
-//           element: <AdminLayout />,
-//           children: [
-//             { index: true, element: <Users /> },
-//             { path: "products", element: <Products /> },
-//             { path: "orders", element: <Orders /> },
-//           ],
-//         },
-//       ],
-//     },
-//   ]);
-//   return (
-//     <div>
-//       <AppContextProvider>
-//         <RouterProvider router={router}></RouterProvider>
-//       </AppContextProvider>
-//     </div>
-//   );
-// }
+import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { useState } from "react";
+import RootLayout from "./components/RootLayout";
+import Product from "./components/Product";
+import Cart from "./components/Cart";
+import Login from "./components/Login";
+import Logout from "./components/Logout";
+import Order from "./components/Order";
+import Register from "./components/Register";
+import AppContextProvider from "./components/AppContextProvider";
+import AdminLayout from "./components/AdminLayout";
+import Products from "./components/Products";
+import Users from "./components/Users";
+import Orders from "./components/Orders";
+import ErrorPageGlobal from "./components/ErrorPageGlobal";
+import ErrorPage from "./components/ErrorPage";
+import ProductDetails from "./components/ProductDetails";
+export default function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <RootLayout />,
+      errorElement: <ErrorPageGlobal />,
+      children: [
+        { index: true, element: <Product />, errorElement: <ErrorPage /> },
+        { path: "details/:id", element: <ProductDetails /> },
+        { path: "cart", element: <Cart /> },
+        { path: "order", element: <Order /> },
+        { path: "login", element: <Login /> },
+        { path: "logout", element: <Logout /> },
+        { path: "register", element: <Register /> },
+        {
+          path: "admin",
+          element: <AdminLayout />,
+          children: [
+            { index: true, element: <Users /> },
+            { path: "products", element: <Products /> },
+            { path: "orders", element: <Orders /> },
+          ],
+        },
+      ],
+    },
+  ]);
+  return (
+    <div>
+      <AppContextProvider>
+        <RouterProvider router={router}></RouterProvider>
+      </AppContextProvider>
+    </div>
+  );
+}
 
 // import React from "react";
 // import Temp from "./components/Temp";
