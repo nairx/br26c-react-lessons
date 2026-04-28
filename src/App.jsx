@@ -1,16 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useTransition } from "react";
 export default function App() {
   const [employees, setEmployees] = useState([]);
-  const handleDisplay = async () => {
-    const res = await fetch("https://jsonplaceholder.typicode.com/users");
-    const data = await res.json();
-    setEmployees(data);
-    for (let i = 0; i < 10000000000; i++) {}
+  const [isPending, startTransition] = useTransition();
+  const handleDisplay = () => {
+    startTransition(async () => {
+      const res = await fetch("https://jsonplaceholder.typicode.com/users");
+      const data = await res.json();
+      setEmployees(data);
+      for (let i = 0; i < 10000000000; i++) {}
+    });
   };
   return (
     <div>
-      <button onClick={handleDisplay}>Display</button>
+      <button onClick={handleDisplay}>Employees</button>
+      <button>Products</button>
+      <button>Vendors</button>
       <hr />
+      {isPending && <h2>Loading...</h2>}
       {employees &&
         employees.map((employee) => <li key={employee.id}>{employee.name}</li>)}
     </div>
