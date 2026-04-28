@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 const Question = ({ q }) => {
   console.log("Question component rendered");
   const questions = [
@@ -34,17 +33,12 @@ export default function App() {
   const [qNum, setQNum] = useState(0);
   useEffect(() => {
     const timer = setInterval(() => {
-      setTimeLeft(timeLeft - 1);
-      if (timeLeft <= 0) {
+      if (timeLeft === 0) {
         clearInterval(timer);
         return;
       }
+      setTimeLeft(timeLeft - 1);
     }, 1000);
-    // setTimeout(() => {
-    //   clearInterval(timer);
-    //   return
-    // }, [60000]);
-
     return () => {
       clearInterval(timer);
     };
@@ -143,15 +137,17 @@ export default function App() {
 // import Orders from "./components/Orders";
 // import ErrorPageGlobal from "./components/ErrorPageGlobal";
 // import ErrorPage from "./components/ErrorPage";
+// import ProductDetails from "./components/ProductDetails";
 // export default function App() {
 //   const router = createBrowserRouter([
 //     {
 //       path: "/",
 //       element: <RootLayout />,
-//       errorElement:<ErrorPageGlobal/>,
+//       errorElement: <ErrorPageGlobal />,
 //       children: [
-//         { index: true, element: <Product />,errorElement:<ErrorPage/> },
+//         { index: true, element: <Product />, errorElement: <ErrorPage /> },
 //         { path: "cart", element: <Cart /> },
+//         { path: "details/:id", element: <ProductDetails /> },
 //         { path: "order", element: <Order /> },
 //         { path: "login", element: <Login /> },
 //         { path: "logout", element: <Logout /> },
