@@ -1,20 +1,39 @@
-import React, { useEffect } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { useState } from "react";
-import EditProd from "./components/EditProd";
-import Prod from "./components/Prod";
-import axios from "axios";
+import React, { useState } from "react";
 export default function App() {
-  const router = createBrowserRouter([
-    { index: true, element: <Prod /> },
-    { path: "/:id", element: <EditProd /> },
-  ]);
+  const [employees, setEmployees] = useState([]);
+  const handleDisplay = async () => {
+    const res = await fetch("https://jsonplaceholder.typicode.com/users");
+    const data = await res.json();
+    setEmployees(data);
+    for (let i = 0; i < 10000000000; i++) {}
+  };
   return (
     <div>
-      <RouterProvider router={router}></RouterProvider>
+      <button onClick={handleDisplay}>Display</button>
+      <hr />
+      {employees &&
+        employees.map((employee) => <li key={employee.id}>{employee.name}</li>)}
     </div>
   );
 }
+
+// import React, { useEffect } from "react";
+// import { createBrowserRouter, RouterProvider } from "react-router-dom";
+// import { useState } from "react";
+// import EditProd from "./components/EditProd";
+// import Prod from "./components/Prod";
+// import axios from "axios";
+// export default function App() {
+//   const router = createBrowserRouter([
+//     { index: true, element: <Prod /> },
+//     { path: "/:id", element: <EditProd /> },
+//   ]);
+//   return (
+//     <div>
+//       <RouterProvider router={router}></RouterProvider>
+//     </div>
+//   );
+// }
 
 // import React from "react";
 // import { createBrowserRouter, RouterProvider } from "react-router-dom";
