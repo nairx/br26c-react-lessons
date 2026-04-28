@@ -4,15 +4,16 @@ import axios from "axios";
 export default function EditProd() {
   const { id } = useParams();
   const [product, setProduct] = useState({});
+  const API_URL = import.meta.env.VITE_API_URL
   const Navigate = useNavigate();
   useEffect(() => {
-    const url = "http://localhost:3001/products/" + id;
+    const url = `${API_URL}/products/${id}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, []);
   const handleUpdate = async () => {
-    const url = "http://localhost:3001/products/"+id
+    const url = `${API_URL}/products/${id}`
     await axios.put(url, product);
     Navigate("/");
   };

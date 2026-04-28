@@ -1,14 +1,15 @@
 import React from "react";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
 export default function Prod() {
   const [products, setProducts] = useState([]);
-      const [product, setProduct] = useState({});
+  const [product, setProduct] = useState({});
+  const API_URL = import.meta.env.VITE_API_URL;
   // const Navigate = useNavigate();
   const fetchProducts = async () => {
-    const url = "http://localhost:3001/products";
+    const url = `${API_URL}/products`;
     const res = await axios.get(url);
     setProducts(res.data);
   };
@@ -17,20 +18,18 @@ export default function Prod() {
   }, []);
 
   const handleDelete = async (id) => {
-    const url = "http://localhost:3001/products/" + id;
+    const url = `${API_URL}/products/${id}`
     await axios.delete(url);
     fetchProducts();
   };
 
   const handleAdd = async () => {
-    const url = "http://localhost:3001/products/";
+    const url = `${API_URL}/products`;
     const res = await axios.post(url, product);
     fetchProducts();
   };
 
-  const handleEdit = (id) => {
-    // Navigate(`/${id}`);
-  };
+
   return (
     <div>
       <p>
@@ -68,7 +67,6 @@ export default function Prod() {
             <Link to={`/${product.id}`}>{product.name}</Link>-{product.price}-
             {product.desc}-
             <button onClick={() => handleDelete(product.id)}>Delete</button>
-            
           </div>
         ))}
     </div>
