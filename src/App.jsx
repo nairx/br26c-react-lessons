@@ -1,27 +1,49 @@
-import React, { useState, useTransition } from "react";
+import React, { useState } from "react";
+
 export default function App() {
   const [employees, setEmployees] = useState([]);
-  const [isPending, startTransition] = useTransition();
-  const handleDisplay = () => {
-    startTransition(async () => {
-      const res = await fetch("https://jsonplaceholder.typicode.com/users");
-      const data = await res.json();
-      setEmployees(data);
-      for (let i = 0; i < 10000000000; i++) {}
-    });
-  };
+  const [text, setText] = useState();
+  fetch("https://jsonplaceholder.typicode.com/users")
+    .then((res) => res.json())
+    .then((data) =>
+      setEmployees(data.filter((elem) => elem.name.includes(text))),
+    )
+    .catch((err) => console.log(err));
   return (
     <div>
-      <button onClick={handleDisplay}>Employees</button>
-      <button>Products</button>
-      <button>Vendors</button>
+      <input type="text" onChange={(e) => setText(e.target.value)} />
       <hr />
-      {isPending && <h2>Loading...</h2>}
-      {employees &&
-        employees.map((employee) => <li key={employee.id}>{employee.name}</li>)}
+      {employees && employees.map(employee => (
+        <li key={employee.id}>{employee.name}</li>
+      ))}
     </div>
   );
 }
+
+// import React, { useState, useTransition } from "react";
+// export default function App() {
+//   const [employees, setEmployees] = useState([]);
+//   const [isPending, startTransition] = useTransition();
+//   const handleDisplay = () => {
+//     startTransition(async () => {
+//       const res = await fetch("https://jsonplaceholder.typicode.com/users");
+//       const data = await res.json();
+//       setEmployees(data);
+//       for (let i = 0; i < 10000000000; i++) {}
+//     });
+//   };
+//   return (
+//     <div>
+//       <button onClick={handleDisplay}>Employees</button>
+//       <button>Products</button>
+//       <button>Vendors</button>
+//       <hr />
+//       {isPending && <h2>Loading...</h2>}
+//       {employees &&
+//         employees.map((employee) => <li key={employee.id}>{employee.name}</li>)}
+//     </div>
+//   );
+// }
 
 // import React, { useEffect } from "react";
 // import { createBrowserRouter, RouterProvider } from "react-router-dom";
