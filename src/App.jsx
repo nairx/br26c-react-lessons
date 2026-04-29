@@ -1,16 +1,16 @@
-import React from 'react'
-import User from './components/User'
+import React from "react";
+import User from "./components/User";
+import ProductRedux from "./components/ProductRedux";
+import { useSelector } from "react-redux";
 export default function App() {
+  const user = useSelector((state) => state.user);
   return (
     <div>
-     <User/>
+      <User />
+      {user.isLoggedIn && <ProductRedux />}
     </div>
-  )
+  );
 }
-
-
-
-
 
 // import React from "react";
 // import "./App.css"
@@ -33,7 +33,7 @@ export default function App() {
 //         Hello World
 //       </h1>
 
-//       {/* 
+//       {/*
 //       <div className="bg-pink-500 m-1 p-1">Box</div>
 //       <div className="bg-orange-500 mx-3 my-4 px-3">Box</div>
 //       <div className="bg-pink-500 mt-3 pt-1">Box</div>
@@ -69,8 +69,6 @@ export default function App() {
 //         Product 1
 //       </div> */}
 
-
-     
 //      <div className="flex">
 //       <div className="box">Box 1</div>
 //       <div className="box">Box 2</div>
