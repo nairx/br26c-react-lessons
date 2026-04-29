@@ -1,5 +1,19 @@
-import React from "react";
-import "./App.css"
+import React from 'react'
+import User from './components/User'
+export default function App() {
+  return (
+    <div>
+     <User/>
+    </div>
+  )
+}
+
+
+
+
+
+// import React from "react";
+// import "./App.css"
 //npm install -D tailwindcss@3 postcss autoprefixer
 
 // npx tailwindcss init –p
@@ -12,60 +26,60 @@ import "./App.css"
 // in tailwind.config.js update following
 //   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 
-export default function App() {
-  return (
-    <div>
-      <h1 className="bg-blue-900 text-3xl font-bold text-orange-300">
-        Hello World
-      </h1>
+// export default function App() {
+//   return (
+//     <div>
+//       <h1 className="bg-blue-900 text-3xl font-bold text-orange-300">
+//         Hello World
+//       </h1>
 
-      {/* 
-      <div className="bg-pink-500 m-1 p-1">Box</div>
-      <div className="bg-orange-500 mx-3 my-4 px-3">Box</div>
-      <div className="bg-pink-500 mt-3 pt-1">Box</div>
-       <div className="bg-pink-500 ms-3 ps-1">Box</div> */}
+//       {/* 
+//       <div className="bg-pink-500 m-1 p-1">Box</div>
+//       <div className="bg-orange-500 mx-3 my-4 px-3">Box</div>
+//       <div className="bg-pink-500 mt-3 pt-1">Box</div>
+//        <div className="bg-pink-500 ms-3 ps-1">Box</div> */}
 
-      {/* <div className="flex justify-center">
-        <div className="bg-pink-500 w-20 m-5">Box</div>
-        <div className="bg-pink-500 w-20 m-5">Box</div>
-        <div className="bg-pink-500 w-20 m-5">Box</div>
-      </div> */}
+//       {/* <div className="flex justify-center">
+//         <div className="bg-pink-500 w-20 m-5">Box</div>
+//         <div className="bg-pink-500 w-20 m-5">Box</div>
+//         <div className="bg-pink-500 w-20 m-5">Box</div>
+//       </div> */}
 
-      {/* <div className="flex justify-center">
-        <div className="bg-pink-500 w-20 m-5">Box</div>
-        <div className="bg-pink-500 w-20 m-5">Box</div>
-        <div className="bg-pink-500 w-20 m-5">Box</div>
-      </div>  */}
+//       {/* <div className="flex justify-center">
+//         <div className="bg-pink-500 w-20 m-5">Box</div>
+//         <div className="bg-pink-500 w-20 m-5">Box</div>
+//         <div className="bg-pink-500 w-20 m-5">Box</div>
+//       </div>  */}
 
-      {/* <div className="grid grid-cols-3 gap-3">
-        <div className="bg-pink-500 w-20 m-5 rounded-sm">Box</div>
-        <div className="bg-pink-500 w-20 m-5">Box</div>
-        <div className="bg-pink-500 w-20 m-5">Box</div>
-      </div>  */}
+//       {/* <div className="grid grid-cols-3 gap-3">
+//         <div className="bg-pink-500 w-20 m-5 rounded-sm">Box</div>
+//         <div className="bg-pink-500 w-20 m-5">Box</div>
+//         <div className="bg-pink-500 w-20 m-5">Box</div>
+//       </div>  */}
 
-      {/* <div className=" m-5 p-5 rounded-md border border-gray-500 ">
-        Hello World
-      </div> */}
+//       {/* <div className=" m-5 p-5 rounded-md border border-gray-500 ">
+//         Hello World
+//       </div> */}
 
-      {/* <div className="lg:text-5xl md:text-3xl sm:text-xl">Lorem ipsum dolor sit amet.</div> */}
+//       {/* <div className="lg:text-5xl md:text-3xl sm:text-xl">Lorem ipsum dolor sit amet.</div> */}
 
-      {/* <button className="bg-gray-300 m-3 p-2 text-xl font-bold hover:bg-gray-400 rounded-lg">Submit</button> */}
+//       {/* <button className="bg-gray-300 m-3 p-2 text-xl font-bold hover:bg-gray-400 rounded-lg">Submit</button> */}
 
-      {/* <div className="m-5 text-3xl bg-blue-300 w-20 hover:bg-blue-400">
-        Product 1
-      </div> */}
+//       {/* <div className="m-5 text-3xl bg-blue-300 w-20 hover:bg-blue-400">
+//         Product 1
+//       </div> */}
 
 
      
-     <div className="flex">
-      <div className="box">Box 1</div>
-      <div className="box">Box 2</div>
-      <div className="box">Box 3</div>
-     </div>
+//      <div className="flex">
+//       <div className="box">Box 1</div>
+//       <div className="box">Box 2</div>
+//       <div className="box">Box 3</div>
+//      </div>
 
-    </div>
-  );
-}
+//     </div>
+//   );
+// }
 
 // export default function App() {
 //   return (
