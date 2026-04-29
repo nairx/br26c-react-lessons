@@ -1,4 +1,71 @@
-// import React from 'react'
+import React from "react";
+import "./App.css"
+//npm install -D tailwindcss@3 postcss autoprefixer
+
+// npx tailwindcss init –p
+
+// Add following in index.css
+// @tailwind base;
+// @tailwind components;
+// @tailwind utilities;
+
+// in tailwind.config.js update following
+//   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+
+export default function App() {
+  return (
+    <div>
+      <h1 className="bg-blue-900 text-3xl font-bold text-orange-300">
+        Hello World
+      </h1>
+
+      {/* 
+      <div className="bg-pink-500 m-1 p-1">Box</div>
+      <div className="bg-orange-500 mx-3 my-4 px-3">Box</div>
+      <div className="bg-pink-500 mt-3 pt-1">Box</div>
+       <div className="bg-pink-500 ms-3 ps-1">Box</div> */}
+
+      {/* <div className="flex justify-center">
+        <div className="bg-pink-500 w-20 m-5">Box</div>
+        <div className="bg-pink-500 w-20 m-5">Box</div>
+        <div className="bg-pink-500 w-20 m-5">Box</div>
+      </div> */}
+
+      {/* <div className="flex justify-center">
+        <div className="bg-pink-500 w-20 m-5">Box</div>
+        <div className="bg-pink-500 w-20 m-5">Box</div>
+        <div className="bg-pink-500 w-20 m-5">Box</div>
+      </div>  */}
+
+      {/* <div className="grid grid-cols-3 gap-3">
+        <div className="bg-pink-500 w-20 m-5 rounded-sm">Box</div>
+        <div className="bg-pink-500 w-20 m-5">Box</div>
+        <div className="bg-pink-500 w-20 m-5">Box</div>
+      </div>  */}
+
+      {/* <div className=" m-5 p-5 rounded-md border border-gray-500 ">
+        Hello World
+      </div> */}
+
+      {/* <div className="lg:text-5xl md:text-3xl sm:text-xl">Lorem ipsum dolor sit amet.</div> */}
+
+      {/* <button className="bg-gray-300 m-3 p-2 text-xl font-bold hover:bg-gray-400 rounded-lg">Submit</button> */}
+
+      {/* <div className="m-5 text-3xl bg-blue-300 w-20 hover:bg-blue-400">
+        Product 1
+      </div> */}
+
+
+     
+     <div className="flex">
+      <div className="box">Box 1</div>
+      <div className="box">Box 2</div>
+      <div className="box">Box 3</div>
+     </div>
+
+    </div>
+  );
+}
 
 // export default function App() {
 //   return (
@@ -17,7 +84,6 @@
 //     </div>
 //   )
 // }
-
 
 // import React from "react";
 // import { useReducer } from "react";
@@ -114,58 +180,58 @@
 //   );
 // }
 
-import React from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { useState } from "react";
-import RootLayout from "./components/RootLayout";
-import Product from "./components/Product";
-import Cart from "./components/Cart";
-import Login from "./components/Login";
-import Logout from "./components/Logout";
-import Order from "./components/Order";
-import Register from "./components/Register";
-import AppContextProvider from "./components/AppContextProvider";
-import AdminLayout from "./components/AdminLayout";
-import Products from "./components/Products";
-import Users from "./components/Users";
-import Orders from "./components/Orders";
-import ErrorPageGlobal from "./components/ErrorPageGlobal";
-import ErrorPage from "./components/ErrorPage";
-import ProductDetails from "./components/ProductDetails";
-export default function App() {
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <RootLayout />,
-      errorElement: <ErrorPageGlobal />,
-      children: [
-        { index: true, element: <Product />, errorElement: <ErrorPage /> },
-        { path: "details/:id", element: <ProductDetails /> },
-        { path: "cart", element: <Cart /> },
-        { path: "order", element: <Order /> },
-        { path: "login", element: <Login /> },
-        { path: "logout", element: <Logout /> },
-        { path: "register", element: <Register /> },
-        {
-          path: "admin",
-          element: <AdminLayout />,
-          children: [
-            { index: true, element: <Users /> },
-            { path: "products", element: <Products /> },
-            { path: "orders", element: <Orders /> },
-          ],
-        },
-      ],
-    },
-  ]);
-  return (
-    <div>
-      <AppContextProvider>
-        <RouterProvider router={router}></RouterProvider>
-      </AppContextProvider>
-    </div>
-  );
-}
+// import React from "react";
+// import { createBrowserRouter, RouterProvider } from "react-router-dom";
+// import { useState } from "react";
+// import RootLayout from "./components/RootLayout";
+// import Product from "./components/Product";
+// import Cart from "./components/Cart";
+// import Login from "./components/Login";
+// import Logout from "./components/Logout";
+// import Order from "./components/Order";
+// import Register from "./components/Register";
+// import AppContextProvider from "./components/AppContextProvider";
+// import AdminLayout from "./components/AdminLayout";
+// import Products from "./components/Products";
+// import Users from "./components/Users";
+// import Orders from "./components/Orders";
+// import ErrorPageGlobal from "./components/ErrorPageGlobal";
+// import ErrorPage from "./components/ErrorPage";
+// import ProductDetails from "./components/ProductDetails";
+// export default function App() {
+//   const router = createBrowserRouter([
+//     {
+//       path: "/",
+//       element: <RootLayout />,
+//       errorElement: <ErrorPageGlobal />,
+//       children: [
+//         { index: true, element: <Product />, errorElement: <ErrorPage /> },
+//         { path: "details/:id", element: <ProductDetails /> },
+//         { path: "cart", element: <Cart /> },
+//         { path: "order", element: <Order /> },
+//         { path: "login", element: <Login /> },
+//         { path: "logout", element: <Logout /> },
+//         { path: "register", element: <Register /> },
+//         {
+//           path: "admin",
+//           element: <AdminLayout />,
+//           children: [
+//             { index: true, element: <Users /> },
+//             { path: "products", element: <Products /> },
+//             { path: "orders", element: <Orders /> },
+//           ],
+//         },
+//       ],
+//     },
+//   ]);
+//   return (
+//     <div>
+//       <AppContextProvider>
+//         <RouterProvider router={router}></RouterProvider>
+//       </AppContextProvider>
+//     </div>
+//   );
+// }
 
 // import React, { useEffect, useState } from "react";
 // const Question = ({ q }) => {
