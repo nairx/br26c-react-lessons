@@ -1,3 +1,33 @@
+import React from "react";
+import { useReducer } from "react";
+function reducer(state, action) {
+  switch (action.type) {
+    case "increment":
+      return { count: state.count + 1 };
+    case "decrement":
+      return { count: state.count - 1 };
+    default:
+      return { count: state.count };
+  }
+}
+export default function App() {
+  const [state, Dispatch] = useReducer(reducer, { count: 0 });
+  const increment = () => {
+    Dispatch({ type: "increment" });
+  };
+
+  const decrement = () => {
+    Dispatch({ type: "decrement" });
+  };
+  return (
+    <div>
+      <button onClick={decrement}>-</button>
+      {state.count}
+      <button onClick={increment}>+</button>
+    </div>
+  );
+}
+
 // import React, { useState } from "react";
 // import { useDeferredValue } from "react";
 // export default function App() {
@@ -64,58 +94,58 @@
 //   );
 // }
 
-import React from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { useState } from "react";
-import RootLayout from "./components/RootLayout";
-import Product from "./components/Product";
-import Cart from "./components/Cart";
-import Login from "./components/Login";
-import Logout from "./components/Logout";
-import Order from "./components/Order";
-import Register from "./components/Register";
-import AppContextProvider from "./components/AppContextProvider";
-import AdminLayout from "./components/AdminLayout";
-import Products from "./components/Products";
-import Users from "./components/Users";
-import Orders from "./components/Orders";
-import ErrorPageGlobal from "./components/ErrorPageGlobal";
-import ErrorPage from "./components/ErrorPage";
-import ProductDetails from "./components/ProductDetails";
-export default function App() {
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <RootLayout />,
-      errorElement: <ErrorPageGlobal />,
-      children: [
-        { index: true, element: <Product />, errorElement: <ErrorPage /> },
-        { path: "details/:id", element: <ProductDetails /> },
-        { path: "cart", element: <Cart /> },
-        { path: "order", element: <Order /> },
-        { path: "login", element: <Login /> },
-        { path: "logout", element: <Logout /> },
-        { path: "register", element: <Register /> },
-        {
-          path: "admin",
-          element: <AdminLayout />,
-          children: [
-            { index: true, element: <Users /> },
-            { path: "products", element: <Products /> },
-            { path: "orders", element: <Orders /> },
-          ],
-        },
-      ],
-    },
-  ]);
-  return (
-    <div>
-      <AppContextProvider>
-        <RouterProvider router={router}></RouterProvider>
-      </AppContextProvider>
-    </div>
-  );
-}
+// import React from "react";
+// import { createBrowserRouter, RouterProvider } from "react-router-dom";
+// import { useState } from "react";
+// import RootLayout from "./components/RootLayout";
+// import Product from "./components/Product";
+// import Cart from "./components/Cart";
+// import Login from "./components/Login";
+// import Logout from "./components/Logout";
+// import Order from "./components/Order";
+// import Register from "./components/Register";
+// import AppContextProvider from "./components/AppContextProvider";
+// import AdminLayout from "./components/AdminLayout";
+// import Products from "./components/Products";
+// import Users from "./components/Users";
+// import Orders from "./components/Orders";
+// import ErrorPageGlobal from "./components/ErrorPageGlobal";
+// import ErrorPage from "./components/ErrorPage";
+// import ProductDetails from "./components/ProductDetails";
+// export default function App() {
+//   const router = createBrowserRouter([
+//     {
+//       path: "/",
+//       element: <RootLayout />,
+//       errorElement: <ErrorPageGlobal />,
+//       children: [
+//         { index: true, element: <Product />, errorElement: <ErrorPage /> },
+//         { path: "details/:id", element: <ProductDetails /> },
+//         { path: "cart", element: <Cart /> },
+//         { path: "order", element: <Order /> },
+//         { path: "login", element: <Login /> },
+//         { path: "logout", element: <Logout /> },
+//         { path: "register", element: <Register /> },
+//         {
+//           path: "admin",
+//           element: <AdminLayout />,
+//           children: [
+//             { index: true, element: <Users /> },
+//             { path: "products", element: <Products /> },
+//             { path: "orders", element: <Orders /> },
+//           ],
+//         },
+//       ],
+//     },
+//   ]);
+//   return (
+//     <div>
+//       <AppContextProvider>
+//         <RouterProvider router={router}></RouterProvider>
+//       </AppContextProvider>
+//     </div>
+//   );
+// }
 
 // import React, { useEffect, useState } from "react";
 // const Question = ({ q }) => {
