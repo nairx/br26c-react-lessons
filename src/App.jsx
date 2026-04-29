@@ -1,14 +1,22 @@
 import React from 'react'
-import {FaHome,FaSave,FaPython} from "react-icons/fa"
+
 export default function App() {
   return (
-    <div>
-      <li><FaHome size={10}/>Home</li>
-      <li><FaSave/>Services</li>
-      <li><FaPython/> About</li>
-    </div>
+    <div>Hello World</div>
   )
 }
+
+// import React from 'react'
+// import {FaHome,FaSave,FaPython} from "react-icons/fa"
+// export default function App() {
+//   return (
+//     <div>
+//       <li><FaHome size={10}/>Home</li>
+//       <li><FaSave/>Services</li>
+//       <li><FaPython/> About</li>
+//     </div>
+//   )
+// }
 
 
 // import React from "react";
