@@ -1,13 +1,14 @@
-import React from 'react'
-import SignIn from './components/SignIn'
+import React from "react";
+import SignIn from "./components/SignIn";
+import User from "./components/User";
 export default function App() {
   return (
     <div>
-      <SignIn/>
+      {/* <User /> */}
+      <SignIn />
     </div>
-  )
+  );
 }
-
 
 // import React from "react";
 // import User from "./components/User";
