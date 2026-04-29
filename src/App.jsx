@@ -1,10 +1,10 @@
-import React from 'react'
+// import React from 'react'
 
-export default function App() {
-  return (
-    <div>Hello World</div>
-  )
-}
+// export default function App() {
+//   return (
+//     <div>Hello World</div>
+//   )
+// }
 
 // import React from 'react'
 // import {FaHome,FaSave,FaPython} from "react-icons/fa"
@@ -114,58 +114,58 @@ export default function App() {
 //   );
 // }
 
-// import React from "react";
-// import { createBrowserRouter, RouterProvider } from "react-router-dom";
-// import { useState } from "react";
-// import RootLayout from "./components/RootLayout";
-// import Product from "./components/Product";
-// import Cart from "./components/Cart";
-// import Login from "./components/Login";
-// import Logout from "./components/Logout";
-// import Order from "./components/Order";
-// import Register from "./components/Register";
-// import AppContextProvider from "./components/AppContextProvider";
-// import AdminLayout from "./components/AdminLayout";
-// import Products from "./components/Products";
-// import Users from "./components/Users";
-// import Orders from "./components/Orders";
-// import ErrorPageGlobal from "./components/ErrorPageGlobal";
-// import ErrorPage from "./components/ErrorPage";
-// import ProductDetails from "./components/ProductDetails";
-// export default function App() {
-//   const router = createBrowserRouter([
-//     {
-//       path: "/",
-//       element: <RootLayout />,
-//       errorElement: <ErrorPageGlobal />,
-//       children: [
-//         { index: true, element: <Product />, errorElement: <ErrorPage /> },
-//         { path: "details/:id", element: <ProductDetails /> },
-//         { path: "cart", element: <Cart /> },
-//         { path: "order", element: <Order /> },
-//         { path: "login", element: <Login /> },
-//         { path: "logout", element: <Logout /> },
-//         { path: "register", element: <Register /> },
-//         {
-//           path: "admin",
-//           element: <AdminLayout />,
-//           children: [
-//             { index: true, element: <Users /> },
-//             { path: "products", element: <Products /> },
-//             { path: "orders", element: <Orders /> },
-//           ],
-//         },
-//       ],
-//     },
-//   ]);
-//   return (
-//     <div>
-//       <AppContextProvider>
-//         <RouterProvider router={router}></RouterProvider>
-//       </AppContextProvider>
-//     </div>
-//   );
-// }
+import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { useState } from "react";
+import RootLayout from "./components/RootLayout";
+import Product from "./components/Product";
+import Cart from "./components/Cart";
+import Login from "./components/Login";
+import Logout from "./components/Logout";
+import Order from "./components/Order";
+import Register from "./components/Register";
+import AppContextProvider from "./components/AppContextProvider";
+import AdminLayout from "./components/AdminLayout";
+import Products from "./components/Products";
+import Users from "./components/Users";
+import Orders from "./components/Orders";
+import ErrorPageGlobal from "./components/ErrorPageGlobal";
+import ErrorPage from "./components/ErrorPage";
+import ProductDetails from "./components/ProductDetails";
+export default function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <RootLayout />,
+      errorElement: <ErrorPageGlobal />,
+      children: [
+        { index: true, element: <Product />, errorElement: <ErrorPage /> },
+        { path: "details/:id", element: <ProductDetails /> },
+        { path: "cart", element: <Cart /> },
+        { path: "order", element: <Order /> },
+        { path: "login", element: <Login /> },
+        { path: "logout", element: <Logout /> },
+        { path: "register", element: <Register /> },
+        {
+          path: "admin",
+          element: <AdminLayout />,
+          children: [
+            { index: true, element: <Users /> },
+            { path: "products", element: <Products /> },
+            { path: "orders", element: <Orders /> },
+          ],
+        },
+      ],
+    },
+  ]);
+  return (
+    <div>
+      <AppContextProvider>
+        <RouterProvider router={router}></RouterProvider>
+      </AppContextProvider>
+    </div>
+  );
+}
 
 // import React, { useEffect, useState } from "react";
 // const Question = ({ q }) => {
