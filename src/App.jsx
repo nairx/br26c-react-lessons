@@ -1,32 +1,44 @@
-import React from "react";
-import { useReducer } from "react";
-function reducer(state, action) {
-  switch (action.type) {
-    case "increment":
-      return { count: state.count + 1 };
-    case "decrement":
-      return { count: state.count - 1 };
-    default:
-      return { count: state.count };
-  }
-}
+import React from 'react'
+import {FaHome,FaSave,FaPython} from "react-icons/fa"
 export default function App() {
-  const [state, Dispatch] = useReducer(reducer, { count: 0 });
-  const increment = () => {
-    Dispatch({ type: "increment" });
-  };
-
-  const decrement = () => {
-    Dispatch({ type: "decrement" });
-  };
   return (
     <div>
-      <button onClick={decrement}>-</button>
-      {state.count}
-      <button onClick={increment}>+</button>
+      <li><FaHome size={10}/>Home</li>
+      <li><FaSave/>Services</li>
+      <li><FaPython/> About</li>
     </div>
-  );
+  )
 }
+
+
+// import React from "react";
+// import { useReducer } from "react";
+// function reducer(state, action) {
+//   switch (action.type) {
+//     case "increment":
+//       return { count: state.count + 1 };
+//     case "decrement":
+//       return { count: state.count - 1 };
+//     default:
+//       return { count: state.count };
+//   }
+// }
+// export default function App() {
+//   const [state, Dispatch] = useReducer(reducer, { count: 0 });
+//   const increment = () => {
+//     Dispatch({ type: "increment" });
+//   };
+//   const decrement = () => {
+//     Dispatch({ type: "decrement" });
+//   };
+//   return (
+//     <div>
+//       <button onClick={decrement}>-</button>
+//       {state.count}
+//       <button onClick={increment}>+</button>
+//     </div>
+//   );
+// }
 
 // import React, { useState } from "react";
 // import { useDeferredValue } from "react";
