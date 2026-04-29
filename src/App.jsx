@@ -1,16 +1,27 @@
-import React from "react";
-import User from "./components/User";
-import ProductRedux from "./components/ProductRedux";
-import { useSelector } from "react-redux";
+import React from 'react'
+import SignIn from './components/SignIn'
 export default function App() {
-  const user = useSelector((state) => state.user);
   return (
     <div>
-      <User />
-      {user.isLoggedIn && <ProductRedux />}
+      <SignIn/>
     </div>
-  );
+  )
 }
+
+
+// import React from "react";
+// import User from "./components/User";
+// import ProductRedux from "./components/ProductRedux";
+// import { useSelector } from "react-redux";
+// export default function App() {
+//   const user = useSelector((state) => state.user);
+//   return (
+//     <div>
+//       <User />
+//       {user.isLoggedIn && <ProductRedux />}
+//     </div>
+//   );
+// }
 
 // import React from "react";
 // import "./App.css"
