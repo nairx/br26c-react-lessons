@@ -14,10 +14,9 @@ import React from 'react'
 
 export default function App() {
   return (
-    <div>App</div>
+    <div>Hello World</div>
   )
 }
-
 
 // import React from "react";
 // import SignIn from "./components/SignIn";
