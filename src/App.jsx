@@ -11,12 +11,28 @@
 // import '@testing-library/jest-dom’;
 
 import React from 'react'
+import { useState } from 'react'
 
 export default function App() {
+  const [message,setMessage] = useState()
   return (
-    <div>Hello World</div>
+    <div>
+      <p>
+        <button onClick={()=>setMessage("Hello World")}>Click</button>
+      </p>
+      {message}
+    </div>
   )
 }
+
+
+
+
+// export default function App() {
+//   return (
+//     <div>Hello World</div>
+//   )
+// }
 
 // import React from "react";
 // import SignIn from "./components/SignIn";
